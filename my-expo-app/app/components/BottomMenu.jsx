@@ -1,10 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Ionicons from "@expo/vector-icons/Ionicons";
-import Home from '../app/Home';
-import Settings from '../app/Settings';
-import Profile from '../app/Profile';
-import CameraPage from 'app/CameraPage';
-import FoodInfo from 'app/FoodInfo';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import Home from '../screens/Home';
+import Settings from '../screens/Settings';
+import Profile from '../screens/Profile';
+import CameraPage from 'app/screens/CameraPage';
+import FoodInfo from 'app/screens/FoodInfo';
 
 const Tab = createBottomTabNavigator();
 
@@ -25,11 +25,11 @@ function BottomMenu() {
               iconName = focused ? 'person' : 'person-outline';
               break;
             case 'Camera':
-                iconName = focused ? 'camera' : 'camera-outline';
-                break;
+              iconName = focused ? 'camera' : 'camera-outline';
+              break;
             case 'FoodInfo':
-                iconName = focused ? 'fast-food' : 'fast-food-outline';
-                break;
+              iconName = focused ? 'fast-food' : 'fast-food-outline';
+              break;
             default:
               iconName = 'help-circle-outline';
           }
@@ -38,8 +38,7 @@ function BottomMenu() {
         },
         tabBarActiveTintColor: 'tomato',
         tabBarInactiveTintColor: 'gray',
-      })}
-    >
+      })}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Settings" component={Settings} />
       <Tab.Screen name="Camera" component={CameraPage} />

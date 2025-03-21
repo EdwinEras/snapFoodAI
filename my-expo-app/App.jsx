@@ -1,6 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
-import BottomMenu from 'components/BottomMenu';
-
+import BottomMenu from 'app/components/BottomMenu';
 
 export default function App() {
   return (
