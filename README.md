@@ -51,15 +51,22 @@ npm install
 yarn add expo
 ```
 
-### 6. Running on iOS (No CocoaPods needed)
+### 6. Configure App.js in the node_modules/expo entry file
+```bash
+import App from '../../app/App';
+```
+
+### 7. Running on iOS (No CocoaPods needed)
 ```bash
 npm run ios
 ```
-### 7. Running on Android
+
+### 8. Running on Android
 ```bash
 npm run android
 ```
-### 8. Running the app with Expo (for both Android and iOS)
+
+### 9. Running the app with Expo (for both Android and iOS)
 ```bash
 npx expo start
 ```
