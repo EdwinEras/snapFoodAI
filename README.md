@@ -25,6 +25,7 @@ https://www.nativewind.dev/overview/
     npm install
 5.- Install expo-cli with yarn:
     yarn add expo
+6. configure app.js in node-modules/expo entry file import App from '../../app/App';
 3.- if running on ios (no cocoapods needed): 
     npm run ios
 4.- if running on android:
