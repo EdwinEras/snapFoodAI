@@ -6,16 +6,13 @@ import {
   import { Button, Pressable, StyleSheet, Text, View } from "react-native";
   import { Image } from "expo-image";
   import { AntDesign } from "@expo/vector-icons";
-  import { Feather } from "@expo/vector-icons";
   import { FontAwesome6 } from "@expo/vector-icons";
   
 function CameraPage() {
     const [permission, requestPermission] = useCameraPermissions();
     const ref = useRef(null);
     const [uri, setUri] = useState(null);
-    const [mode, setMode] = useState("picture");
     const [facing, setFacing] = useState("back");
-    const [recording, setRecording] = useState(false);
   
     if (!permission) {
       return null;
@@ -35,21 +32,6 @@ function CameraPage() {
     const takePicture = async () => {
       const photo = await ref.current?.takePictureAsync();
       setUri(photo?.uri);
-    };
-  
-    const recordVideo = async () => {
-      if (recording) {
-        setRecording(false);
-        ref.current?.stopRecording();
-        return;
-      }
-      setRecording(true);
-      const video = await ref.current?.recordAsync();
-      console.log({ video });
-    };
-  
-    const toggleMode = () => {
-      setMode((prev) => (prev === "picture" ? "video" : "picture"));
     };
   
     const toggleFacing = () => {
@@ -74,20 +56,16 @@ function CameraPage() {
         <CameraView
           style={styles.camera}
           ref={ref}
-          mode={mode}
+          mode="picture"
           facing={facing}
           mute={false}
           responsiveOrientationWhenOrientationLocked
         >
           <View style={styles.shutterContainer}>
-            <Pressable onPress={toggleMode}>
-              {mode === "picture" ? (
+            <Pressable>
                 <AntDesign name="picture" size={32} color="white" />
-              ) : (
-                <Feather name="video" size={32} color="white" />
-              )}
             </Pressable>
-            <Pressable onPress={mode === "picture" ? takePicture : recordVideo}>
+            <Pressable onPress={takePicture}>
               {({ pressed }) => (
                 <View
                   style={[
@@ -101,7 +79,7 @@ function CameraPage() {
                     style={[
                       styles.shutterBtnInner,
                       {
-                        backgroundColor: mode === "picture" ? "white" : "red",
+                        backgroundColor:"white",
                       },
                     ]}
                   />
