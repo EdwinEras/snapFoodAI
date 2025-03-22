@@ -12,7 +12,9 @@ function Profile() {
           <Text style={styles.sectionTitle}>
             <Ionicons name="person-outline" size={19} /> Basic Info
           </Text>
-          <Ionicons name="create-outline" size={20} />
+          <TouchableOpacity onPress={() => navigation.navigate('UserInfoSwiper')}>
+            <Ionicons name="create-outline" size={20} />
+          </TouchableOpacity>
         </View>
         <View style={styles.row}>
           <View style={styles.box}>
