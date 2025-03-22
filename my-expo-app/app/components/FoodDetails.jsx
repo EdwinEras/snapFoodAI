@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   outerCircle: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FA551E',
+    backgroundColor: '#FF8C19',
     borderRadius: 50,
     paddingVertical: 15,
     paddingHorizontal: 10,
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   },
   circleText: {
     fontSize: 14,
-    color: '#FA551E',
+    color: '#FF8C19',
     fontWeight: 'bold',
   },
   nutrientText: {

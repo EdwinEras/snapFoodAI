@@ -133,7 +133,8 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 14,
-    color: '#FA551E',
+    color: '#FF8C19',
+    fontWeight: 400,
     marginBottom: 6,
   },
   value: {

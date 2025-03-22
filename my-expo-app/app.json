@@ -4,7 +4,6 @@
     "slug": "my-expo-app",
     "version": "1.0.0",
     "web": {
-      "favicon": "./assets/favicon.png",
       "bundler": "metro"
     },
     "experiments": {

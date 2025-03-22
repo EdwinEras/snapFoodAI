@@ -36,7 +36,7 @@ function BottomMenu() {
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: '#FA551E',
+        tabBarActiveTintColor: '#FF8C19',
         tabBarInactiveTintColor: '#C7C1BB',
         headerShown: false,
       })}>
