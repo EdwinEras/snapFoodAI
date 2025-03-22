@@ -33,13 +33,13 @@ function BottomMenu() {
             default:
               iconName = 'help-circle-outline';
           }
-
           return <Ionicons name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor: '#FF8C19',
         tabBarInactiveTintColor: '#C7C1BB',
         headerShown: false,
       })}>
+
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="FoodInfo" component={FoodInfo} />
       <Tab.Screen name="Camera" component={CameraPage} />

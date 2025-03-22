@@ -15,8 +15,8 @@ const HeroSection = () => {
         </View>
       </ImageBackground>
     </View>
-  );
-};
+  )
+}
 
 const HomeScreen = () => {
   return (

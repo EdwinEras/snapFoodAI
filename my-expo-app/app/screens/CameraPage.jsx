@@ -1,18 +1,12 @@
-import {
-    CameraView,
-    useCameraPermissions,
-  } from "expo-camera";
-  import { useRef, useState } from "react";
-  import { Button, Pressable, StyleSheet, Text, View } from "react-native";
-  import { Image } from "expo-image";
-  import { AntDesign } from "@expo/vector-icons";
-  import { FontAwesome6 } from "@expo/vector-icons";
+import { useCameraPermissions } from "expo-camera";
+import { useEffect, useState } from "react";
+import { Button, StyleSheet, Text, View } from "react-native";
+import RenderPicture from "app/components/RenderPicture";
+import RenderCamera from "app/components/RenderCamera";
   
-function CameraPage() {
+const CameraPage = () => {
     const [permission, requestPermission] = useCameraPermissions();
-    const ref = useRef(null);
     const [uri, setUri] = useState(null);
-    const [facing, setFacing] = useState("back");
   
     if (!permission) {
       return null;
@@ -28,116 +22,22 @@ function CameraPage() {
         </View>
       );
     }
-  
-    const takePicture = async () => {
-      const photo = await ref.current?.takePictureAsync();
-      setUri(photo?.uri);
-    };
-  
-    const toggleFacing = () => {
-      setFacing((prev) => (prev === "back" ? "front" : "back"));
-    };
-  
-    const renderPicture = () => {
-      return (
-        <View>
-          <Image
-            source={{ uri }}
-            contentFit="contain"
-            style={{ width: 300, aspectRatio: 1 }}
-          />
-          <Button onPress={() => setUri(null)} title="Take another picture" />
-        </View>
-      );
-    };
-  
-    const renderCamera = () => {
-      return (
-        <CameraView
-          style={styles.camera}
-          ref={ref}
-          mode="picture"
-          facing={facing}
-          mute={false}
-          responsiveOrientationWhenOrientationLocked
-        >
-          <View style={styles.shutterContainer}>
-            <Pressable>
-                <AntDesign name="picture" size={32} color="white" />
-            </Pressable>
-            <Pressable onPress={takePicture}>
-              {({ pressed }) => (
-                <View
-                  style={[
-                    styles.shutterBtn,
-                    {
-                      opacity: pressed ? 0.5 : 1,
-                    },
-                  ]}
-                >
-                  <View
-                    style={[
-                      styles.shutterBtnInner,
-                      {
-                        backgroundColor:"white",
-                      },
-                    ]}
-                  />
-                </View>
-              )}
-            </Pressable>
-            <Pressable onPress={toggleFacing}>
-              <FontAwesome6 name="rotate-left" size={32} color="white" />
-            </Pressable>
-          </View>
-        </CameraView>
-      );
-    };
-  
+
     return (
       <View style={styles.container}>
-        {uri ? renderPicture() : renderCamera()}
+        {uri ? <RenderPicture uri={uri} setUri={setUri}/> 
+            : <RenderCamera setUri={setUri}/>}
       </View>
     );
   }
   
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: "#fff",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    camera: {
-      flex: 1,
-      width: "100%",
-    },
-    shutterContainer: {
-      position: "absolute",
-      bottom: 44,
-      left: 0,
-      width: "100%",
-      alignItems: "center",
-      flexDirection: "row",
-      justifyContent: "space-between",
-      paddingHorizontal: 30,
-    },
-    shutterBtn: {
-      backgroundColor: "transparent",
-      borderWidth: 5,
-      borderColor: "white",
-      width: 85,
-      height: 85,
-      borderRadius: 45,
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    shutterBtnInner: {
-      width: 70,
-      height: 70,
-      borderRadius: 50,
-    },
-  });
-
+const styles = StyleSheet.create({
+container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+}
+});
 
 export default CameraPage;

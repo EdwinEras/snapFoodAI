@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Modal, TouchableOpacity } from 'react-native';
+import { ScrollView, StyleSheet, SafeAreaView, View, Text, Modal, TouchableOpacity } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import MealsBoxes from 'app/components/MealsBoxes';
 
 function Profile() {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
+    <SafeAreaView>
+    <ScrollView>
     <View style={styles.container}>
       <View style={styles.card}>
         <View style={styles.row}>
@@ -92,7 +95,11 @@ function Profile() {
           </View>
         </View>
       </Modal>
+
+      <MealsBoxes />
     </View>
+    </ScrollView>
+    </SafeAreaView>
   );
 }
 

@@ -1,6 +1,7 @@
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import BottomMenu from 'app/components/BottomMenu';
 import "./global.css"
+import './gesture-handler';
 
 const MyTheme = {
   ...DefaultTheme,
