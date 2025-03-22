@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, SafeAreaView, View, Text, Modal, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MealsBoxes from 'app/components/MealsBoxes';
 
 function Profile() {
   const [modalVisible, setModalVisible] = useState(false);
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView>
