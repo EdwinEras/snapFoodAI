@@ -18,17 +18,17 @@ function BottomMenu() {
             case 'Home':
               iconName = focused ? 'home' : 'home-outline';
               break;
-            case 'Settings':
-              iconName = focused ? 'settings' : 'settings-outline';
-              break;
-            case 'Profile':
-              iconName = focused ? 'person' : 'person-outline';
+            case 'FoodInfo':
+              iconName = focused ? 'fast-food' : 'fast-food-outline';
               break;
             case 'Camera':
               iconName = focused ? 'camera' : 'camera-outline';
               break;
-            case 'FoodInfo':
-              iconName = focused ? 'fast-food' : 'fast-food-outline';
+            case 'Profile':
+              iconName = focused ? 'person' : 'person-outline';
+              break;
+            case 'Settings':
+              iconName = focused ? 'settings' : 'settings-outline';
               break;
             default:
               iconName = 'help-circle-outline';
@@ -36,14 +36,15 @@ function BottomMenu() {
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: 'tomato',
-        tabBarInactiveTintColor: 'gray',
+        tabBarActiveTintColor: '#FA551E',
+        tabBarInactiveTintColor: '#C7C1BB',
+        headerShown: false,
       })}>
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Settings" component={Settings} />
+      <Tab.Screen name="FoodInfo" component={FoodInfo} />
       <Tab.Screen name="Camera" component={CameraPage} />
       <Tab.Screen name="Profile" component={Profile} />
-      <Tab.Screen name="FoodInfo" component={FoodInfo} />
+      <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>
   );
 }
