@@ -49,7 +49,6 @@ const Rewards = () => {
         <Image source={require('../../assets/avatar_happy.png')} style={styles.avatar} />
       </View>
 
-      {/* Points Display */}
       <View style={styles.pointsContainer}>
         <View style={styles.pointsItem}>
           <FontAwesome5 name="fire" size={18} color="#FFD700" />
@@ -61,7 +60,6 @@ const Rewards = () => {
         </View>
       </View>
 
-      {/* Progress Section */}
       <View style={styles.progressContainer}>
         <Text style={styles.progressText}>Collect {pointsToNext} points to reach next streak</Text>
         {progress === 0 && points > 0 ? (
@@ -71,7 +69,6 @@ const Rewards = () => {
         )}
       </View>
 
-      {/* How It Works Section */}
       <View style={styles.howItWorksContainer}>
         <Text style={styles.howItWorksTitle}>How It Works</Text>
         <View style={styles.howItWorksRow}>
@@ -98,7 +95,6 @@ const Rewards = () => {
         </View>
       </View>
 
-      {/* Rewards Section */}
       <View style={styles.rewardsGrid}>
         {rewardsList.map((reward) => {
           const isUnlocked = streaks >= reward.requiredStreaks;
