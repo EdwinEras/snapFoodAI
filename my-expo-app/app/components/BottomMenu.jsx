@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Home from '../screens/Home';
-import UserInfoSwiper from '../screens/UserInfoSwiper';
+import Rewards from '../screens/Rewards';
 import Profile from '../screens/Profile';
 import CameraPage from 'app/screens/CameraPage';
 import FoodInfo from 'app/screens/FoodInfo';
@@ -27,8 +27,8 @@ function BottomMenu() {
             case 'Profile':
               iconName = focused ? 'person' : 'person-outline';
               break;
-            case 'UserInfo':
-              iconName = focused ? 'UserInfo' : 'settings-outline';
+            case 'Rewards':
+              iconName = focused ? 'gift' : 'gift-outline';
               break;
             default:
               iconName = 'help-circle-outline';
@@ -39,12 +39,11 @@ function BottomMenu() {
         tabBarInactiveTintColor: '#C7C1BB',
         headerShown: false,
       })}>
-
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="FoodInfo" component={FoodInfo} />
       <Tab.Screen name="Camera" component={CameraPage} />
       <Tab.Screen name="Profile" component={Profile} />
-      <Tab.Screen name="UserInfo" component={UserInfoSwiper} />
+      <Tab.Screen name="Rewards" component={Rewards} />
     </Tab.Navigator>
   );
 }

@@ -4,8 +4,8 @@ import Swiper from 'react-native-swiper';
 import { useNavigation } from '@react-navigation/native';
 import avatarBg from '../../assets/avatarBg.png';
 
-const UserInfoSwiper = () => {
-  const navigation = useNavigation();
+const UserInfo = () => {
+  const navigationHome = useNavigation();
   const [formData, setFormData] = useState({
     name: '',
     lastName: '',
@@ -19,7 +19,7 @@ const UserInfoSwiper = () => {
 
   const handleChange = (key, value) => setFormData({ ...formData, [key]: value });
 
-  const handleFinish = () => navigation.navigate('Home');
+  const handleFinish = () => navigationHome.navigate('Main', { screen: 'Home' });
 
   const renderSlide = (label, key, placeholder, keyboardType = 'default') => (
     <ImageBackground source={avatarBg} style={styles.avatarBg}>
@@ -70,7 +70,7 @@ const UserInfoSwiper = () => {
       </ImageBackground>
 
       <ImageBackground source={avatarBg} style={styles.avatarBg}>
-      <View style={styles.overlay} />
+        <View style={styles.overlay} />
         <View style={styles.slide}>
           <View style={styles.glassContainer}>
             <Text style={styles.title}>Your activity level</Text>
@@ -103,7 +103,7 @@ const UserInfoSwiper = () => {
       </ImageBackground>
 
       <ImageBackground source={avatarBg} style={styles.avatarBg}>
-      <View style={styles.overlay} />
+        <View style={styles.overlay} />
         <View style={styles.slide}>
           <TouchableOpacity style={styles.nextButton} onPress={handleFinish}>
             <Text style={styles.nextText}>Finish</Text>
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   option: {
-    width: 250,
+    width: 280,
     paddingVertical: 15,
     paddingHorizontal: 20,
     backgroundColor: '#F7F5F2',
@@ -190,8 +190,8 @@ const styles = StyleSheet.create({
     borderColor: '#ddd',
   },
   selectedOption: {
-    backgroundColor: '#F8B400',
-    borderColor: '#F8B400',
+    backgroundColor: '#FF8C19',
+    borderColor: '#FF8C19',
   },
   optionText: {
     fontSize: 16,
@@ -224,4 +224,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default UserInfoSwiper;
+export default UserInfo;

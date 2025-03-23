@@ -1,6 +1,8 @@
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import BottomMenu from 'app/components/BottomMenu';
-import "./global.css"
+import UserInfo from 'app/screens/UserInfo';
+import './global.css';
 import './gesture-handler';
 
 const MyTheme = {
@@ -11,10 +13,15 @@ const MyTheme = {
   },
 };
 
+const Stack = createStackNavigator();
+
 export default function App() {
   return (
     <NavigationContainer theme={MyTheme}>
-      <BottomMenu />
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Main" component={BottomMenu} />
+        <Stack.Screen name="UserInfo" component={UserInfo} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

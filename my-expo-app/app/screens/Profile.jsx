@@ -17,7 +17,7 @@ function Profile() {
           <Text style={styles.sectionTitle}>
             <Ionicons name="person-outline" size={19} /> Basic Info
           </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('UserInfoSwiper')}>
+          <TouchableOpacity onPress={() => navigation.navigate('UserInfo')}>
             <Ionicons name="create-outline" size={20} />
           </TouchableOpacity>
         </View>
