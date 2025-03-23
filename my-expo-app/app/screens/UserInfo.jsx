@@ -190,8 +190,8 @@ const styles = StyleSheet.create({
     borderColor: '#ddd',
   },
   selectedOption: {
-    backgroundColor: '#FF8C19',
-    borderColor: '#FF8C19',
+    backgroundColor: '#FF7E5F',
+    borderColor: '#FF7E5F',
   },
   optionText: {
     fontSize: 16,
@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#DFDCD8',
   },
   activeDot: {
-    backgroundColor: '#FF8C19',
+    backgroundColor: '#FF7E5F',
   },
 });
 

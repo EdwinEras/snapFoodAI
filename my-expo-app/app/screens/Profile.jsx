@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, SafeAreaView, View, Text, Modal, TouchableOpacity } from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  SafeAreaView,
+  View,
+  Text,
+  Modal,
+  TouchableOpacity,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { FontAwesome5 } from '@expo/vector-icons';
 import MealsBoxes from 'app/components/MealsBoxes';
 
 function Profile() {
@@ -10,109 +18,109 @@ function Profile() {
 
   return (
     <SafeAreaView>
-    <ScrollView>
-    <View style={styles.container}>
-      <View style={styles.card}>
-        <View style={styles.row}>
-          <Text style={styles.sectionTitle}>
-            <Ionicons name="person-outline" size={19} /> Basic Info
-          </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('UserInfo')}>
-            <Ionicons name="create-outline" size={20} />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.row}>
-          <View style={styles.box}>
-            <Text style={styles.label}>Name</Text>
-            <Text style={styles.value}>John</Text>
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.card}>
+            <View style={styles.row}>
+              <Text style={styles.sectionTitle}>
+                <FontAwesome5 name="user" size={18} color="#44403D"/> Basic Info
+              </Text>
+              <TouchableOpacity onPress={() => navigation.navigate('UserInfo')}>
+                <FontAwesome5 name="edit" size={20} color="#44403D"/>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.row}>
+              <View style={styles.box}>
+                <Text style={styles.label}>Name</Text>
+                <Text style={styles.value}>John</Text>
+              </View>
+              <View style={styles.box}>
+                <Text style={styles.label}>Last Name</Text>
+                <Text style={styles.value}>Doe</Text>
+              </View>
+            </View>
+            <View style={styles.row}>
+              <View style={styles.box}>
+                <Text style={styles.label}>Age</Text>
+                <Text style={styles.value}>30</Text>
+              </View>
+              <View style={styles.box}>
+                <Text style={styles.label}>Gender</Text>
+                <Text style={styles.value}>Male</Text>
+              </View>
+            </View>
+            <View style={styles.row}>
+              <View style={styles.box}>
+                <Text style={styles.label}>Email</Text>
+                <Text style={styles.value}>tesssst@gmail.com</Text>
+              </View>
+              <View style={styles.box}>
+                <Text style={styles.label}>Activity Level</Text>
+                <Text style={styles.value}>Lightly Active</Text>
+              </View>
+            </View>
+            <View style={styles.row}>
+              <View style={styles.box}>
+                <Text style={styles.label}>Height (cm)</Text>
+                <Text style={styles.value}>165</Text>
+              </View>
+              <View style={styles.box}>
+                <Text style={styles.label}>Weight (kg)</Text>
+                <Text style={styles.value}>72.0</Text>
+              </View>
+            </View>
           </View>
-          <View style={styles.box}>
-            <Text style={styles.label}>Last Name</Text>
-            <Text style={styles.value}>Doe</Text>
-          </View>
-        </View>
-        <View style={styles.row}>
-          <View style={styles.box}>
-            <Text style={styles.label}>Age</Text>
-            <Text style={styles.value}>30</Text>
-          </View>
-          <View style={styles.box}>
-            <Text style={styles.label}>Gender</Text>
-            <Text style={styles.value}>Male</Text>
-          </View>
-        </View>
-        <View style={styles.row}>
-          <View style={styles.box}>
-            <Text style={styles.label}>Email</Text>
-            <Text style={styles.value}>tesssst@gmail.com</Text>
-          </View>
-          <View style={styles.box}>
-            <Text style={styles.label}>Activity Level</Text>
-            <Text style={styles.value}>Lightly Active</Text>
-          </View>
-        </View>
-        <View style={styles.row}>
-          <View style={styles.box}>
-            <Text style={styles.label}>Height (cm)</Text>
-            <Text style={styles.value}>165</Text>
-          </View>
-          <View style={styles.box}>
-            <Text style={styles.label}>Weight (kg)</Text>
-            <Text style={styles.value}>72.0</Text>
-          </View>
-        </View>
-      </View>
 
-      <View style={styles.card}>
-        <View style={styles.bmiHeader}>
-          <Text style={styles.sectionTitle}>
-            <Ionicons name="bar-chart" size={20} color="#978F86" /> BMI
-          </Text>
-        </View>
-        <View style={styles.row}>
-          <Text style={styles.bmiValue}>26.4</Text>
-          <View style={styles.bmiResult}>
-            <Text style={styles.overweight}>Overweight</Text>
-            <TouchableOpacity onPress={() => setModalVisible(true)}>
-              <Ionicons name="information-circle" size={20} color="#978F86" />
-            </TouchableOpacity>
+          <View style={styles.card}>
+            <View style={styles.bmiHeader}>
+              <Text style={styles.sectionTitle}>
+                <FontAwesome5 name="chart-bar" size={20} color="#44403D" /> BMI
+              </Text>
+            </View>
+            <View style={styles.row}>
+              <Text style={styles.bmiValue}>26.4</Text>
+              <View style={styles.bmiResult}>
+                <Text style={styles.overweight}>Overweight</Text>
+                <TouchableOpacity onPress={() => setModalVisible(true)}>
+                  <FontAwesome5 name="info-circle" size={20} color="#44403D" />
+                </TouchableOpacity>
+              </View>
+            </View>
+            <View style={styles.bmiBar}>
+              <View style={[styles.bmiSegment, styles.underweight]} />
+              <View style={[styles.bmiSegment, styles.normal]} />
+              <View style={[styles.bmiSegment, styles.overweightSegment]} />
+              <View style={[styles.bmiSegment, styles.obese]} />
+            </View>
+            <View style={styles.bmiLabels}>
+              <Text style={styles.bmiLabel}>0</Text>
+              <Text style={styles.bmiLabel}>18.5</Text>
+              <Text style={styles.bmiLabel}>24.9</Text>
+              <Text style={styles.bmiLabel}>29.9</Text>
+              <Text style={styles.bmiLabel}>40+</Text>
+            </View>
           </View>
-        </View>
-        <View style={styles.bmiBar}>
-          <View style={[styles.bmiSegment, styles.underweight]} />
-          <View style={[styles.bmiSegment, styles.normal]} />
-          <View style={[styles.bmiSegment, styles.overweightSegment]} />
-          <View style={[styles.bmiSegment, styles.obese]} />
-        </View>
-        <View style={styles.bmiLabels}>
-          <Text style={styles.bmiLabel}>0</Text>
-          <Text style={styles.bmiLabel}>18.5</Text>
-          <Text style={styles.bmiLabel}>24.9</Text>
-          <Text style={styles.bmiLabel}>29.9</Text>
-          <Text style={styles.bmiLabel}>40+</Text>
-        </View>
-      </View>
 
-      <Modal visible={modalVisible} transparent animationType="fade">
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}> Body Mass Index (BMI)</Text>
-            <Text style={styles.modalText}>
-              BMI is a measure of body fat based on height and weight. A BMI under 18.5 is
-              underweight, 18.5-24.9 is healthy, 25-29.9 is overweight, and 30+ is obese. While BMI
-              is a useful screening tool, it does not directly measure body fat and should be
-              considered alonside other health factors.
-            </Text>
-            <TouchableOpacity style={styles.modalButton} onPress={() => setModalVisible(false)}>
-              <Text style={styles.modalButtonText}>OK</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
+          <Modal visible={modalVisible} transparent animationType="fade">
+            <View style={styles.modalContainer}>
+              <View style={styles.modalContent}>
+                <Text style={styles.modalTitle}> Body Mass Index (BMI)</Text>
+                <Text style={styles.modalText}>
+                  BMI is a measure of body fat based on height and weight. A BMI under 18.5 is
+                  underweight, 18.5-24.9 is healthy, 25-29.9 is overweight, and 30+ is obese. While
+                  BMI is a useful screening tool, it does not directly measure body fat and should
+                  be considered alonside other health factors.
+                </Text>
+                <TouchableOpacity style={styles.modalButton} onPress={() => setModalVisible(false)}>
+                  <Text style={styles.modalButtonText}>OK</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
 
-      <MealsBoxes />
-    </View>
-    </ScrollView>
+          <MealsBoxes />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -153,7 +161,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 14,
-    color: '#FF8C19',
+    color: '#FF7E5F',
     fontWeight: 400,
     marginBottom: 6,
   },
@@ -161,7 +169,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#4F4A46',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   bmiHeader: {
     flexDirection: 'row',
@@ -181,7 +189,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   overweight: {
-    color: '#FF8C19',
+    color: '#FF7E5F',
     fontWeight: 'bold',
     marginRight: 6,
   },
@@ -202,7 +210,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#B4DC19',
   },
   overweightSegment: {
-    backgroundColor: '#FF8C19',
+    backgroundColor: '#FF7E5F',
     flex: 0.8,
   },
   obese: {
@@ -246,7 +254,7 @@ const styles = StyleSheet.create({
     color: '#978F86',
   },
   modalButton: {
-    backgroundColor: '#FF8C19',
+    backgroundColor: '#FF7E5F',
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 5,

@@ -15,15 +15,15 @@ const HeroSection = () => {
         </View>
       </ImageBackground>
     </View>
-  )
-}
+  );
+};
 
 const HomeScreen = () => {
   return (
     <SafeAreaView>
       <ScrollView>
         <HeroSection />
-        <MealsScreen/>
+        <MealsScreen />
       </ScrollView>
     </SafeAreaView>
   );
@@ -31,9 +31,9 @@ const HomeScreen = () => {
 
 const styles = StyleSheet.create({
   imageContainer: { marginTop: 20, height: 450 },
-  image: { width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'},
+  image: { width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center' },
   overlay: {
-    backgroundColor: '#FF8C19',
+    backgroundColor: '#FF7E5F',
     opacity: 0.4,
     position: 'absolute',
     width: '100%',
