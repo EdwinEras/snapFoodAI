@@ -33,22 +33,32 @@ function Profile() {
         </View>
         <View style={styles.row}>
           <View style={styles.box}>
-            <Text style={styles.label}>Height (cm)</Text>
-            <Text style={styles.value}>165</Text>
-          </View>
-          <View style={styles.box}>
-            <Text style={styles.label}>Weight (kg)</Text>
-            <Text style={styles.value}>72.0</Text>
-          </View>
-        </View>
-        <View style={styles.row}>
-          <View style={styles.box}>
             <Text style={styles.label}>Age</Text>
             <Text style={styles.value}>30</Text>
           </View>
           <View style={styles.box}>
             <Text style={styles.label}>Gender</Text>
             <Text style={styles.value}>Male</Text>
+          </View>
+        </View>
+        <View style={styles.row}>
+          <View style={styles.box}>
+            <Text style={styles.label}>Email</Text>
+            <Text style={styles.value}>tesssst@gmail.com</Text>
+          </View>
+          <View style={styles.box}>
+            <Text style={styles.label}>Activity Level</Text>
+            <Text style={styles.value}>Lightly Active</Text>
+          </View>
+        </View>
+        <View style={styles.row}>
+          <View style={styles.box}>
+            <Text style={styles.label}>Height (cm)</Text>
+            <Text style={styles.value}>165</Text>
+          </View>
+          <View style={styles.box}>
+            <Text style={styles.label}>Weight (kg)</Text>
+            <Text style={styles.value}>72.0</Text>
           </View>
         </View>
       </View>
@@ -111,7 +121,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    marginTop: 50,
   },
   card: {
     backgroundColor: '#fff',
@@ -152,6 +161,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#4F4A46',
+    textAlign: 'center'
   },
   bmiHeader: {
     flexDirection: 'row',
