@@ -24,7 +24,7 @@ const RenderPicture = ({ uri, setUri }) => {
       setN((prevN) => prevN + 1);
       console.log('Data saved successfully!');
       setUri(null);
-      navigation.navigate('Profile');
+      navigation.navigate('Congratulations');
     } catch (error) {
       console.error('Error saving data:', error);
     }
