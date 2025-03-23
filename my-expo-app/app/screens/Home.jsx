@@ -1,5 +1,6 @@
 import { ScrollView, SafeAreaView, View, StyleSheet, Text, ImageBackground } from 'react-native';
 import MealsScreen from './MealsPage';
+import AvatarHome from 'app/components/AvatarHome';
 
 const HeroSection = () => {
   return (
@@ -22,7 +23,8 @@ const HomeScreen = () => {
   return (
     <SafeAreaView>
       <ScrollView>
-        <HeroSection />
+        {/* <HeroSection /> */}
+        <AvatarHome />
         <MealsScreen />
       </ScrollView>
     </SafeAreaView>
