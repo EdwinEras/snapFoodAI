@@ -1,8 +1,9 @@
 import { useCameraPermissions } from "expo-camera";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import RenderPicture from "app/components/RenderPicture";
 import RenderCamera from "app/components/RenderCamera";
+import PhotoInfo from "./PhotoInfo";
   
 const CameraPage = () => {
     const [permission, requestPermission] = useCameraPermissions();
@@ -25,7 +26,7 @@ const CameraPage = () => {
 
     return (
       <View style={styles.container}>
-        {uri ? <RenderPicture uri={uri} setUri={setUri}/> 
+        {uri ? <PhotoInfo uri={uri} setUri={setUri}/> 
             : <RenderCamera setUri={setUri}/>}
       </View>
     );

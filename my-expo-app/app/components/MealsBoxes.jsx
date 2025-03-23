@@ -49,8 +49,13 @@ const MealsBoxes = () => {
   return (
     <View style={styles.container}>
       {arrImgs.map((uri, id) => (
-        <View key={id} style={styles.imageWrapper}>
-          <Image source={{ uri }} contentFit="cover" style={styles.image} />
+        <View key={`meal_${id}`}>
+          <View>
+            <Text style={styles.updateButtonText}>Meal ${n+1}</Text>
+          </View>
+          <View style={styles.imageWrapper}>
+            <Image source={{ uri }} contentFit="cover" style={styles.image} />
+          </View>
         </View>
       ))}
 
