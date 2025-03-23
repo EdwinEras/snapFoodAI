@@ -1,16 +1,16 @@
-import { Text, View, Button } from 'react-native';
-import { Image } from "expo-image";
+import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import { Image } from 'expo-image';
 import { useEffect, useState } from 'react';
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const MealsBoxes = () => {
   const [arrImgs, setArrImgs] = useState([]);
   const [n, setN] = useState(0);
 
-    useEffect(() => {
-      const loadCounter = async () => {
-        const storedN = await AsyncStorage.getItem("meal_counter");
-        setN(storedN ? parseInt(storedN) : 0);
+  useEffect(() => {
+    const loadCounter = async () => {
+      const storedN = await AsyncStorage.getItem('meal_counter');
+      setN(storedN ? parseInt(storedN) : 0);
     };
     loadCounter();
   }, []);
@@ -29,7 +29,7 @@ const MealsBoxes = () => {
       }
       setArrImgs(newArr);
     } catch (error) {
-      console.error("Error retrieving data:", error);
+      console.error('Error retrieving data:', error);
     }
   };
 
@@ -38,29 +38,83 @@ const MealsBoxes = () => {
       for (let i = 0; i <= n; i++) {
         const key = `meal_${i}`;
         await AsyncStorage.removeItem(key);
-        await AsyncStorage.removeItem("meal_counter");
+        await AsyncStorage.removeItem('meal_counter');
       }
       setArrImgs([]);
     } catch (error) {
-      console.error("Error deleting data:", error);
+      console.error('Error deleting data:', error);
     }
   };
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!!</Text>
-      {arrImgs? <Button onPress={deleteMeal} title="Reset Meals" /> : <></> }
+    <View style={styles.container}>
       {arrImgs.map((uri, id) => (
-        <Image
-          key={id}
-          source={{ uri }}  
-          contentFit="contain"
-          style={{ width: 150, aspectRatio: 1 }}
-        />
+        <View key={id} style={styles.imageWrapper}>
+          <Image source={{ uri }} contentFit="cover" style={styles.image} />
+        </View>
       ))}
-      <Button onPress={getMeals} title="Update Meals" />
+
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.resetButton} onPress={deleteMeal}>
+          <Text style={styles.resetButtonText}>Reset Meals</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.updateButton} onPress={getMeals}>
+          <Text style={styles.updateButtonText}>Update Meals</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    paddingVertical: 20,
+  },
+  imageWrapper: {
+    width: '100%',
+    aspectRatio: 1,
+    marginBottom: 10,
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 10,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginTop: 20,
+  },
+  resetButton: {
+    backgroundColor: '#14C8EB',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    marginHorizontal: 10,
+    flex: 1,
+  },
+  resetButtonText: {
+    fontSize: 16,
+    color: '#fff',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  updateButton: {
+    backgroundColor: '#2D2B29',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    flex: 1,
+  },
+  updateButtonText: {
+    fontSize: 16,
+    color: '#fff',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+});
 
 export default MealsBoxes;

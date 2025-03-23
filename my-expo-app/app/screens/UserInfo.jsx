@@ -106,7 +106,7 @@ const UserInfo = () => {
         <View style={styles.overlay} />
         <View style={styles.slide}>
           <TouchableOpacity style={styles.nextButton} onPress={handleFinish}>
-            <Text style={styles.nextText}>Finish</Text>
+            <Text style={styles.nextText}>Submit</Text>
           </TouchableOpacity>
         </View>
       </ImageBackground>
@@ -205,8 +205,8 @@ const styles = StyleSheet.create({
   },
   nextButton: {
     paddingVertical: 15,
-    paddingHorizontal: 25,
-    backgroundColor: '#F8B400',
+    paddingHorizontal: 30,
+    backgroundColor: '#2D2B29',
     borderRadius: 8,
     textTransform: 'uppercase',
     alignItems: 'center',
@@ -214,6 +214,7 @@ const styles = StyleSheet.create({
   nextText: {
     fontSize: 18,
     color: '#fff',
+    textTransform: 'uppercase',
     fontWeight: 'bold',
   },
   dot: {
