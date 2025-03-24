@@ -9,8 +9,11 @@ const AvatarHome = () => {
   const [n, setN] = useState(0);
 
   useEffect(()=>{
-    getCount();
-  }, []);
+    const loadCounter = async () => {
+      getCount();
+    }
+    loadCounter();
+  }, [n]);
 
   const getCount = async () => {
     try {
@@ -22,7 +25,6 @@ const AvatarHome = () => {
       } else {
         setN(parseInt(value));
         console.log(value);
-        
       }
     } catch (error) {
       console.error('Error retrieving data:', error);

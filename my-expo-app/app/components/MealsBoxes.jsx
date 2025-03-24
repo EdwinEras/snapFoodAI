@@ -11,14 +11,16 @@ const MealsBoxes = () => {
     const loadCounter = async () => {
       const storedN = await AsyncStorage.getItem('meal_counter');
       setN(storedN ? parseInt(storedN) : 0);
+      getMeals();
+      console.log(n);
     };
     loadCounter();
-  }, []);
+  }, [n]);
 
   const getMeals = async () => {
     try {
       const newArr = [];
-      for (let i = 0; i <= n; i++) {
+      for (let i = 0; i < n; i++) {
         const key = `meal_${i}`;
         const value = await AsyncStorage.getItem(key);
         if (value !== null) {
@@ -41,6 +43,7 @@ const MealsBoxes = () => {
         await AsyncStorage.removeItem('meal_counter');
       }
       setArrImgs([]);
+      setN(0);
     } catch (error) {
       console.error('Error deleting data:', error);
     }
@@ -63,9 +66,9 @@ const MealsBoxes = () => {
         <TouchableOpacity style={styles.resetButton} onPress={deleteMeal}>
           <Text style={styles.resetButtonText}>Reset Meals</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.updateButton} onPress={getMeals}>
+        {/* <TouchableOpacity style={styles.updateButton} onPress={getMeals}>
           <Text style={styles.updateButtonText}>Update Meals</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </View>
   );
