@@ -1,13 +1,11 @@
-import { Button, View, Pressable, Text, StyleSheet } from 'react-native';
-import { Image } from 'expo-image';
+import { View, StyleSheet } from 'react-native';
 
+import FoodInfo from 'app/screens/FoodInfo';
 
-const RenderPicture = ({ uri }) => {
+const RenderPicture = ({ uri, setUri }) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.imgWrapper}>
-        <Image source={{ uri }} style={styles.image} />
-      </View>
+    <View >
+      <FoodInfo uri={uri} setUri={setUri}/>
     </View>
   );
 };
@@ -17,20 +15,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    width: '90%',
+    width: '100%',
     marginTop: 50,
   },
-  imgWrapper: {
-    width: '100%',
-    height: 300,
-    marginBottom: 20,
-  },
-  image: {
-    width: '100%',
-    borderRadius: 10,
-    height: '100%',
-    objectFit: 'cover',
-  }
+  imageContainer: { alignItems: 'center', marginTop: '20'},
+  image: { width: '100%', height: 300 },
 });
 
 export default RenderPicture;

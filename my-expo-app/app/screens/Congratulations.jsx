@@ -9,28 +9,30 @@ const Congratulations = () => {
     const nextPage = () => navigation.navigate('Main', { screen: 'Home' })
 
     return (
-        <View style={styles.container}>
-            <Text styles={styles.buttonText}>Congratulations</Text>
-            <View style={styles.imgWrapper}>
-                <Image source={avatarEating} contentFit="cover" style={styles.image}/>
-            </View>
-            <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.button} onPress={nextPage}>
-                    <Text style={styles.buttonText}>continue</Text>
-                </TouchableOpacity>
-            </View>
-        </View>
+      <View style={styles.container}>
+          <Text>Yummy!! Thank you for feeding me</Text>
+          <Text>Remember to drink wather</Text>
+          <View style={styles.imgWrapper}>
+              <Image source={avatarEating} contentFit="cover" style={styles.image}/>
+          </View>
+          <View style={styles.buttonContainer}>
+              <TouchableOpacity style={styles.button} onPress={nextPage}>
+                  <Text style={styles.buttonText}>continue</Text>
+              </TouchableOpacity>
+          </View>
+      </View>
     );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    justifyContent: 'center', // Centers vertically
+    alignItems: 'center', // Centers horizontally
     paddingVertical: 20,
   },
   imgWrapper: {
-    width: '100%',
+    width: '80%',
     height: 400,
     marginBottom: 20,
   },

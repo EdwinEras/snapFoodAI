@@ -115,14 +115,14 @@ const FoodDetails = ({uri, setUri}) => {
         ))}
       </View>
 
-      {uri? <View style={styles.buttonContainer}>
+      <View style={styles.buttonContainer}>
         <Pressable style={styles.button} onPress={redoMeal}>
-          <Text style={styles.buttonText}>Delete meal</Text>
+          <Text style={styles.buttonText}>Retake picture</Text>
         </Pressable>
         <Pressable style={styles.button} onPress={() => saveMeal(uri)}>
           <Text style={styles.buttonText}>Save meal</Text>
         </Pressable>
-      </View>: <></>}
+      </View>
     </ScrollView>
   );
 };

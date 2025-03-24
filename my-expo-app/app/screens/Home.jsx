@@ -9,7 +9,7 @@ const HomeScreen = () => {
       <ScrollView>
         <AvatarHome />
         <MealsBoxes />
-        {/* <MealsScreen /> */}
+        <MealsScreen />
       </ScrollView>
     </SafeAreaView>
   );

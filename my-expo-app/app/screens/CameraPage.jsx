@@ -2,10 +2,12 @@ import { useCameraPermissions } from "expo-camera";
 import { useState } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import RenderCamera from "app/components/RenderCamera";
+import RenderPicture from "app/components/RenderPicture";
+import { useImage } from '../components/ImageContext';
   
 const CameraPage = () => {
     const [permission, requestPermission] = useCameraPermissions();
-    // const [uri, setUri] = useState(null);
+    const {uri, setUri} = useImage();
   
     if (!permission) {
       return null;
@@ -24,18 +26,18 @@ const CameraPage = () => {
 
     return (
       <View style={styles.container}>
-        {/* {uri ? <FoodInfo uri={uri} setUri={setUri}/> : <RenderCamera setUri={setUri}/> */}
-        <RenderCamera />
+        {uri ? <RenderPicture uri={uri} setUri={setUri}/> : <RenderCamera setUri={setUri}/>}
       </View>
     );
   }
   
 const styles = StyleSheet.create({
 container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+  flex: 1,
+  backgroundColor: "#fff",
+  alignItems: "center",
+  justifyContent: "center",
+  width: '100%'
 }
 });
 

@@ -3,20 +3,14 @@ import { useRef, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome6 } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native'; 
-import { useImage } from './ImageContext';
 
-const RenderCamera = () => {
-  const {uri, setUri} = useImage();
+const RenderCamera = ({setUri}) => {
   const [facing, setFacing] = useState('back');
   const ref = useRef(null);
-  const navigation = useNavigation();
-  
 
   const takePicture = async () => {
     const photo = await ref.current?.takePictureAsync();
     setUri(photo?.uri);
-    navigation.navigate('Main', { screen: 'FoodInfo' })
   };
 
   const toggleFacing = () => {
