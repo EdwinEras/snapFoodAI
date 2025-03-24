@@ -117,8 +117,6 @@ function Profile() {
               </View>
             </View>
           </Modal>
-
-          <MealsBoxes />
         </View>
       </ScrollView>
     </SafeAreaView>

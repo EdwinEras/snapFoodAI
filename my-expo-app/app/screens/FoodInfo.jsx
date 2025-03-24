@@ -1,16 +1,21 @@
-import { ScrollView, SafeAreaView, View, StyleSheet } from 'react-native';
+import { ScrollView, SafeAreaView, View, StyleSheet, Pressable, Text } from 'react-native';
 import FoodImage from '../components/FoodImage';
 import FoodDetails from '../components/FoodDetails';
+import RenderPicture from 'app/components/RenderPicture';
+import { useImage } from '../components/ImageContext';
 
 const FoodInfo = () => {
+  const {uri, setUri} = useImage();
+  
   return (
     <SafeAreaView>
       <ScrollView>
-        <FoodImage />
+        {uri? <RenderPicture uri={uri} />: <FoodImage />}
         <View style={styles.container}>
-          <FoodDetails />
+          <FoodDetails uri={uri} setUri={setUri}/>
         </View>
       </ScrollView>
+      
     </SafeAreaView>
   );
 };
@@ -18,7 +23,6 @@ const FoodInfo = () => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'start',
-    marginTop: -30,
     marginHorizontal: 15,
     backgroundColor: '#F7F5F2',
     borderRadius: 20,
@@ -28,7 +32,7 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     elevation: 5,
   },
-  image: { width: '100%', height: 300 },
+  
 });
 
 export default FoodInfo;

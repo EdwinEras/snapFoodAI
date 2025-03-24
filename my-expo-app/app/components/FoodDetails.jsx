@@ -1,5 +1,7 @@
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useState, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const nutrientData = [
   { name: 'Calories', value: '364', unit: 'kcal' },
@@ -44,12 +46,35 @@ const nutrientData = [
   { name: 'Zinc', value: '-', unit: '' },
 ];
 
-const FoodDetails = () => {
+const FoodDetails = ({uri, setUri}) => {
+  const [n, setN] = useState(0);
   const navigation = useNavigation();
 
-  const handleSaveMeal = () => {
-    navigation.navigate('Home');
+  useEffect(() => {
+    const loadCounter = async () => {
+      const storedN = await AsyncStorage.getItem('meal_counter');
+      setN(storedN ? parseInt(storedN) : 0);
+    };
+    loadCounter();
+  }, []);
+
+  const saveMeal = async (uri) => {
+    try {
+      console.log('meal_' + n + ': ' + uri);
+      await AsyncStorage.setItem('meal_' + n, uri);
+      await AsyncStorage.setItem('meal_counter', (n + 1).toString());
+      setN((prevN) => prevN + 1);
+      setUri(null);
+      navigation.navigate('Congratulations');
+    } catch (error) {
+      console.error('Error saving data:', error);
+    }
   };
+
+  const redoMeal = () => {
+    setUri(null);
+    navigation.navigate('Main', { screen: 'CameraPage' })
+  }
 
   const topRowNutrients = nutrientData.filter((nutrient) =>
     ['Calories', 'Proteins', 'Fat', 'Carbs'].includes(nutrient.name)
@@ -90,11 +115,14 @@ const FoodDetails = () => {
         ))}
       </View>
 
-      <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={styles.button} onPress={handleSaveMeal}>
-          <Text style={styles.buttonText}>Continue</Text>
-        </TouchableOpacity>
-      </View>
+      {uri? <View style={styles.buttonContainer}>
+        <Pressable style={styles.button} onPress={redoMeal}>
+          <Text style={styles.buttonText}>Delete meal</Text>
+        </Pressable>
+        <Pressable style={styles.button} onPress={() => saveMeal(uri)}>
+          <Text style={styles.buttonText}>Save meal</Text>
+        </Pressable>
+      </View>: <></>}
     </ScrollView>
   );
 };
@@ -142,7 +170,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF7E5F',
     borderRadius: 5,
   },
-  buttonText: { fontSize: 16, fontWeight: '500', color: '#fff', opacity: 0.8 },
+  buttonText: { fontSize: 16, fontWeight: '500', color: '#fff', opacity: 0.8 }
 });
 
 export default FoodDetails;
