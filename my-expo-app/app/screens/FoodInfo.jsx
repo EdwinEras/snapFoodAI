@@ -1,13 +1,14 @@
 import { ScrollView, SafeAreaView, View, StyleSheet, Pressable, Text } from 'react-native';
 import { Image } from 'expo-image';
 import FoodDetails from '../components/FoodDetails';
+import FoodImage from 'app/components/FoodImage';
 
 const FoodInfo = ({uri, setUri}) => {
   return (
     <SafeAreaView>
       <ScrollView>
-        <View style={styles.imageContainer}>
-          <Image source={{uri}} style={styles.image} />
+        <View>
+          <FoodImage uri={uri} />
         </View>
         <View style={styles.container}>
           <FoodDetails uri={uri} setUri={setUri}/>
