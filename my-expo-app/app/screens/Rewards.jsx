@@ -51,11 +51,11 @@ const Rewards = () => {
 
       <View style={styles.pointsContainer}>
         <View style={styles.pointsItem}>
-          <FontAwesome5 name="fire" size={18} color="#FFD700" />
+          <FontAwesome5 name="fire" size={18} color="#FF7E5F" />
           <Text style={styles.pointsText}>{streaks} Streaks</Text>
         </View>
         <View style={styles.pointsItem}>
-          <FontAwesome5 name="star" size={18} color="#FFD700" />
+          <FontAwesome5 name="star" size={18} color="#FF7E5F" />
           <Text style={styles.pointsText}>{points} Points</Text>
         </View>
       </View>
@@ -124,15 +124,14 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     paddingTop: 80,
-    backgroundColor: '#FF7E5F',
   },
   header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   avatar: { width: 60, height: 60, borderRadius: 30 },
-  greatJob: { fontSize: 22, fontWeight: 'bold', color: '#fff' },
+  greatJob: { fontSize: 22, fontWeight: 'bold', color: '#FF7E5F' },
   textContainer: {
     flex: 1,
   },
-  levelText: { fontSize: 14, color: '#fff' },
+  levelText: { fontSize: 14, color: '#FF7E5F' },
   levelBadge: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -141,7 +140,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   howItWorksContainer: {
-    backgroundColor: '#FFF7E6',
+    backgroundColor: '#FF7E5F',
     padding: 15,
     borderRadius: 10,
     marginBottom: 30,
@@ -165,10 +164,10 @@ const styles = StyleSheet.create({
   levelNumber: { fontSize: 16, fontWeight: 'bold', marginRight: 5 },
   pointsContainer: { flexDirection: 'row', justifyContent: 'space-between', marginVertical: 20 },
   pointsItem: { flexDirection: 'row', alignItems: 'center' },
-  pointsText: { fontSize: 16, color: '#fff', marginLeft: 8 },
+  pointsText: { fontSize: 16, color: '#67615A', marginLeft: 8 },
   progressContainer: { marginBottom: 20, alignItems: 'center' },
-  progressText: { fontSize: 14, color: '#fff', marginBottom: 10 },
-  progressComplete: { fontSize: 18, fontWeight: 'bold', color: '#FAD24B' },
+  progressText: { fontSize: 14, color: '#67615A', marginBottom: 10 },
+  progressComplete: { fontSize: 18, fontWeight: 'bold', color: '#FF7E5F' },
   rewardsGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -180,10 +179,15 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     marginBottom: 10,
-    backgroundColor: '#FFF7E6',
+    backgroundColor: '#fff',
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    elevation: 2,
   },
   unlocked: { opacity: 1 },
-  locked: { opacity: 0.8 },
+  locked: { opacity: 0.6 },
   rewardTitle: { fontSize: 16, fontWeight: 'bold', marginTop: 8, color: '#2D2B29' },
   rewardDesc: { fontSize: 14, marginTop: 5, textAlign: 'center', color: '#2D2B29' },
 });

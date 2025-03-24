@@ -21,7 +21,7 @@ export default function App() {
   return (
     <ImageProvider>
       <NavigationContainer theme={MyTheme}>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Navigator screenOptions={{ headerShown: false, gestureEnabled: false }}>
           <Stack.Screen name="Main" component={BottomMenu} />
           <Stack.Screen name="UserInfo" component={UserInfo} />
           <Stack.Screen name="Congratulations" component={Congratulations} />
