@@ -50,8 +50,8 @@ const MealsBoxes = () => {
     <View style={styles.container}>
       {arrImgs.map((uri, id) => (
         <View key={`meal_${id}`}>
-          <View>
-            <Text style={styles.updateButtonText}>Meal ${n+1}</Text>
+          <View >
+            <Text>Meal {id+1}</Text>
           </View>
           <View style={styles.imageWrapper}>
             <Image source={{ uri }} contentFit="cover" style={styles.image} />
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   imageWrapper: {
-    width: '100%',
+    width: '20%',
     aspectRatio: 1,
     marginBottom: 10,
   },

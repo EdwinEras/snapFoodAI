@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     alignItems: 'start',
     marginHorizontal: 15,
     backgroundColor: '#F7F5F2',
+    marginTop:-30,
     borderRadius: 20,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
