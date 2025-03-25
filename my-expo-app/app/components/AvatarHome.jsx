@@ -5,31 +5,16 @@ import avatarHappy from "../../assets/avatar_happy.png";
 import avatarBackground from "../../assets/avatar_background.avif";
 import { View, Image, ImageBackground, StyleSheet } from 'react-native';
 
-const AvatarHome = () => {
-  const [n, setN] = useState(0);
+const AvatarHome = ({n, setN}) => {
 
   useEffect(()=>{
     const loadCounter = async () => {
-      getCount();
+      const storedN = await AsyncStorage.getItem('meal_counter');
+      setN(storedN ? parseInt(storedN) : 0);
+      console.log("AvatarHome: "+n);
     }
     loadCounter();
   }, [n]);
-
-  const getCount = async () => {
-    try {
-      const key = `meal_counter`;
-      const value = await AsyncStorage.getItem(key);
-      if (value == null ) {
-        setN(0);
-        console.log(`No value found for ${key}`);
-      } else {
-        setN(parseInt(value));
-        console.log(value);
-      }
-    } catch (error) {
-      console.error('Error retrieving data:', error);
-    }
-  };
 
   return (
     <View style={styles.imageContainer}>

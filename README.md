@@ -70,3 +70,10 @@ npm run android
 ```bash
 npx expo start
 ```
+
+### 10. For web support
+if you get an error about autoprefixer do:
+```bash
+npm install autoprefixer
+npx expo install expo-web-browser
+```

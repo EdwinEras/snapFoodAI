@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const MealSection = ({ title, meals }) => {
   return (
@@ -22,20 +24,30 @@ const MealSection = ({ title, meals }) => {
   );
 };
 
-const MealsScreen = () => {
+const MealsScreen = ({n, setN}) => {
+  const [arrImgs, setArrImgs] = useState([]);
+  useEffect(() => {
+    const loadCounter = async () => {
+      const storedN = await AsyncStorage.getItem('meal_counter');
+      setN(storedN ? parseInt(storedN) : 0);
+      getMeals();
+    };
+    loadCounter();
+  }, [n]);
+  
   const mealsData = {
     breakfast: [
       {
         id: '1',
         name: 'Oatmeal & Berries',
-        date: 'March 21, 2025',
+        date: 'March 25, 2025',
         image:
           'https://images.unsplash.com/photo-1735316159929-4cd6782faa83?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fG9hdG1lYWwlMjBhbmQlMjBiZXJyaWVzfGVufDB8fDB8fHww',
       },
       {
         id: '2',
         name: 'Avocado Toast',
-        date: 'March 21, 2025',
+        date: 'March 25, 2025',
         image:
           'https://images.unsplash.com/photo-1603046891726-36bfd957e0bf?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
@@ -44,14 +56,14 @@ const MealsScreen = () => {
       {
         id: '3',
         name: 'Grilled Chicken Salad',
-        date: 'March 21, 2025',
+        date: 'March 25, 2025',
         image:
           'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=2026&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
       {
         id: '4',
         name: 'Pasta Primavera',
-        date: 'March 21, 2025',
+        date: 'March 25, 2025',
         image:
           'https://images.unsplash.com/photo-1473093226795-af9932fe5856?q=80&w=1994&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
@@ -60,26 +72,44 @@ const MealsScreen = () => {
       {
         id: '5',
         name: 'Salmon & Veggies',
-        date: 'March 21, 2025',
+        date: 'March 25, 2025',
         image:
           'https://plus.unsplash.com/premium_photo-1675676628504-6593cc3b36e1?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
       {
         id: '6',
         name: 'Beef Stir Fry',
-        date: 'March 21, 2025',
+        date: 'March 25, 2025',
         image:
           'https://images.unsplash.com/photo-1720701247887-cab418baa6d6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
     ],
   };
 
+  const getMeals = async () => {
+    try {
+      const newArr = [];
+      for (let i = 0; i < n; i++) {
+        const key = `meal_${i}`;
+        const value = await AsyncStorage.getItem(key);
+        if (value !== null) {
+          newArr.push(value);
+        } else {
+          console.log(`No value found for ${key}`);
+        }
+      }
+      setArrImgs(newArr);
+    } catch (error) {
+      console.error('Error retrieving data:', error);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.mainTitle}>My Meals</Text>
-      <MealSection title="Breakfast" meals={mealsData.breakfast} />
-      <MealSection title="Lunch" meals={mealsData.lunch} />
-      <MealSection title="Dinner" meals={mealsData.dinner} />
+      {arrImgs.map((img, index) => (
+        <MealSection title="Breakfast" meals={mealsData.breakfast} />
+      ))}
     </View>
   );
 };

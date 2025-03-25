@@ -1,5 +1,4 @@
 import { useCameraPermissions } from "expo-camera";
-import { useState } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import RenderCamera from "app/components/RenderCamera";
 import RenderPicture from "app/components/RenderPicture";

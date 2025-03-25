@@ -3,16 +3,14 @@ import { Image } from 'expo-image';
 import { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const MealsBoxes = () => {
+const MealsBoxes = ({n, setN}) => {
   const [arrImgs, setArrImgs] = useState([]);
-  const [n, setN] = useState(0);
 
   useEffect(() => {
     const loadCounter = async () => {
       const storedN = await AsyncStorage.getItem('meal_counter');
       setN(storedN ? parseInt(storedN) : 0);
       getMeals();
-      console.log(n);
     };
     loadCounter();
   }, [n]);

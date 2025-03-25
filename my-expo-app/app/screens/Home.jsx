@@ -2,14 +2,16 @@ import { ScrollView, SafeAreaView, View, StyleSheet, Text, ImageBackground } fro
 import MealsScreen from './MealsPage';
 import AvatarHome from 'app/components/AvatarHome';
 import MealsBoxes from 'app/components/MealsBoxes';
+import { useState } from 'react';
 
 const HomeScreen = () => {
+  const [n, setN] = useState(0);
   return (
     <SafeAreaView>
       <ScrollView>
-        <AvatarHome />
-        <MealsBoxes />
-        <MealsScreen />
+        <AvatarHome n={n} setN={setN}/>
+        <MealsBoxes n={n} setN={setN}/>
+        <MealsScreen n={n} setN={setN}/>
       </ScrollView>
     </SafeAreaView>
   );
