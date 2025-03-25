@@ -81,7 +81,7 @@ function Profile() {
               <View style={styles.bmiResult}>
                 <Text style={styles.bmiResulttext}>Overweight</Text>
                 <TouchableOpacity onPress={() => setModalVisible(true)}>
-                  <MaterialCommunityIcons name="information" size={20} color="#502810" />
+                  <MaterialCommunityIcons name="information" size={20} color="#D3CEC9" />
                 </TouchableOpacity>
               </View>
             </View>
@@ -144,6 +144,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 18,
+    textTransform: 'uppercase',
     fontWeight: 'bold',
     color: '#502810',
     marginBottom: 10,
@@ -190,7 +191,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   bmiResulttext: {
-    color: '#ea2300',
+    color: '#fe1212',
     fontWeight: 'bold',
     textTransform: 'uppercase',
     marginRight: 6,
@@ -206,17 +207,17 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   underweight: {
-    backgroundColor: '#14C8EB',
+    backgroundColor: '#145163',
   },
   normal: {
-    backgroundColor: '#b5e550',
+    backgroundColor: '#1da719',
   },
   overweightSegment: {
     backgroundColor: '#fcc93c',
     flex: 0.8,
   },
   obese: {
-    backgroundColor: '#ea2300',
+    backgroundColor: '#fe1212',
   },
   bmiLabels: {
     flexDirection: 'row',
