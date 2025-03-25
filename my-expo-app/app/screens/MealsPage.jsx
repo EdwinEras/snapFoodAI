@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, Button } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const MealsScreen = ({n, setN}) => {
+const MealsScreen = ({ n, setN }) => {
   const [arrImgs, setArrImgs] = useState([]);
 
   useEffect(() => {
@@ -14,12 +14,8 @@ const MealsScreen = ({n, setN}) => {
     };
     loadCounter();
   }, [n]);
-  
-  const titles = [
-    { name: 'Breakfast' },
-    { name: 'Lunch' },
-    { name: 'Dinner' }
-  ];
+
+  const titles = [{ name: 'Breakfast' }, { name: 'Lunch' }, { name: 'Dinner' }];
 
   const getMeals = async () => {
     try {
@@ -55,79 +51,102 @@ const MealsScreen = ({n, setN}) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.mainTitle}>My Meals</Text>
+      {n === 0 && (
+        <View style={styles.infoContainer}>
+          <Text style={styles.infoText}>
+            <Ionicons name="leaf" size={18} color="#502810" />
+            {'  '}Make Every Meal Count! Scan Food, Earn Rewards, and Keep Your Pine Marten Smiling!
+          </Text>
+          <Text style={styles.infoText}>
+            <Ionicons name="star" size={18} color="#502810" />
+            {'  '}Once you upload meals, I’ll be happy, and you’ll earn points and rewards for
+            staying on track with your nutrition.
+          </Text>
+          <Text style={styles.infoText}>
+            <Ionicons name="checkmark-circle" size={18} color="#502810" />
+            {'  '}Your meals will appear right here once uploaded.
+          </Text>
+        </View>
+      )}
+
+      {arrImgs.length > 0 && <Text style={styles.mainTitle}>My Meals</Text>}
+
       {arrImgs.map((img, index) => (
-        <View key={index} style={styles.section}>
-        {index<3? <Text style={styles.sectionTitle}>{titles[index].name}</Text>: <></>}
-          <View style={styles.mealContainer}>
-            <View style={styles.card}>
-              <Image source={{uri:img}} style={styles.image} />
-              <View style={styles.textContainer}>
-                <Text style={styles.mealName}>Meal #{index+1}</Text>
-                <Text style={styles.date}>March 25, 2025</Text>
-                <Ionicons name="flame" size={24} color="orange" style={styles.icon} />
+        <View key={index} style={styles.mealContainer}>
+          {index < 3 ? <Text style={styles.sectionTitle}>{titles[index].name}</Text> : null}
+          <View style={styles.card}>
+            <Image source={{ uri: img }} style={styles.image} />
+            <View style={styles.textContainer}>
+              <Text style={styles.mealName}>Meal #{index + 1}</Text>
+              <Text style={styles.date}>March 25, 2025</Text>
+              <View style={styles.pointsContainer}>
+                <Ionicons name="star-outline" size={20} color="#fe9b3d" />
+                <Text style={styles.pointsText}>10 Points</Text>
               </View>
             </View>
           </View>
         </View>
       ))}
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.resetButton} onPress={deleteMeal}>
-          <Text style={styles.resetButtonText}>Reset Meals</Text>
-        </TouchableOpacity>
-      </View>
+
+      {arrImgs.length > 0 && (
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.resetButton} onPress={deleteMeal}>
+            <Text style={styles.resetButtonText}>Reset Meals</Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 20 },
-  mainTitle: { fontSize: 28, fontWeight: 'bold', textAlign: 'center', marginBottom: 20 },
-  section: { marginBottom: 20 },
-  sectionTitle: { fontSize: 22, fontWeight: 'bold', marginBottom: 10 },
-  mealContainer: {
-    flexDirection: 'column',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-  },
-  card: {
-    backgroundColor: 'white',
-    borderRadius: 12,
-    marginBottom: 15,
-    width: '48%',
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  textContainer: {
-    paddingVertical: 12,
-    paddingHorizontal: 8,
-  },
-  image: { width: '100%', height: 100, borderTopLeftRadius : 8, borderTopRightRadius: 8},
-  mealName: { fontSize: 16, fontWeight: 'bold', marginTop: 5, textAlign: 'center', marginBottom: 6},
-  date: { fontSize: 12, color: 'gray', marginBottom: 5, textAlign: 'center' },
-  icon: { marginTop: 5, textAlign: 'center' },
-  buttonContainer: {
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    width: '100%',
-    marginTop: 20,
-  },
-  resetButton: {
-    backgroundColor: '#14C8EB',
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 8,
-    marginHorizontal: 10,
-    flex: 1,
-  },
-  resetButtonText: {
-    fontSize: 16,
-    color: '#fff',
+  mainTitle: {
+    fontSize: 24,
     fontWeight: 'bold',
+    textAlign: 'center',
+    marginVertical: 30,
+    textTransform: 'uppercase',
+  },
+  sectionTitle: { fontSize: 18, fontWeight: 700, marginBottom: 14, textTransform: 'uppercase' },
+  mealContainer: { marginBottom: 60 },
+  card: {
+    flexDirection: 'row',
+    overflow: 'hidden',
+    alignItems: 'center',
+  },
+  image: { width: '40%', height: 150, borderRadius: 8 },
+  textContainer: { flex: 1, padding: 12 },
+  mealName: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 15,
+    textTransform: 'uppercase',
+    color: '#502810',
+  },
+  date: { fontSize: 14, color: '#502810', marginBottom: 4 },
+  pointsContainer: { flexDirection: 'row', alignItems: 'center', marginTop: 5 },
+  pointsText: { fontSize: 16, color: '#502810', marginLeft: 5 },
+  buttonContainer: { marginTop: 20 },
+  resetButton: {
+    backgroundColor: '#145163',
+    paddingVertical: 15,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  resetButtonText: { fontSize: 16, color: '#fff', fontWeight: 'bold', textTransform: 'uppercase' },
+  infoContainer: {
+    padding: 15,
+    borderRadius: 8,
+    width: '100%',
+    marginBottom: 20,
+    marginTop: 40,
+    alignItems: 'center',
+  },
+  infoText: {
+    color: '#502810',
+    fontSize: 16,
+    marginBottom: 8,
     textAlign: 'center',
   },
 });

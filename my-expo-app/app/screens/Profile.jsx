@@ -212,7 +212,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#b5e550',
   },
   overweightSegment: {
-    backgroundColor: '#fbdb4b',
+    backgroundColor: '#fcc93c',
     flex: 0.8,
   },
   obese: {
