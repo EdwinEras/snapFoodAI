@@ -3,7 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import avatarSad from "../../assets/avatar_sad.png";
 import avatarHappy from "../../assets/avatar_happy.png";
 import avatarBackground from "../../assets/avatar_background.avif";
-import { View, Image, ImageBackground, StyleSheet } from 'react-native';
+import { View, Text, Image, ImageBackground, StyleSheet } from 'react-native';
 
 const AvatarHome = ({n, setN}) => {
 
@@ -23,6 +23,8 @@ const AvatarHome = ({n, setN}) => {
         {n<1? <Image source={avatarSad} style={styles.overlayImage} />
         :<Image source={avatarHappy} style={styles.overlayImage} />}
       </ImageBackground>
+      {n==0? <Text>Please feed me, I'm hungry</Text>:
+      <Text>Thank you, I am full now</Text>}
     </View>
   );
 };

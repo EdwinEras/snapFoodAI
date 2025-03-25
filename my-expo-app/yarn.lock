@@ -6423,6 +6423,11 @@ react-is@^18.0.0, react-is@^18.2.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.3.1.tgz#e83557dc12eae63a99e003a46388b1dcbb44db7e"
   integrity sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==
 
+react-native-animated-progress@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-animated-progress/-/react-native-animated-progress-1.0.2.tgz#3c5c90daf9624abfeb5bf5b9950c9ef3913d1063"
+  integrity sha512-8EQSHTjT7QQY+u/Gknc1X4FxlV/8gRevi2wAlMIUQBf3fq13z++8WIGPPwwKvjsVcQJMm4cadTwn3Ptn5fiUJw==
+
 react-native-css-interop@0.1.22:
   version "0.1.22"
   resolved "https://registry.yarnpkg.com/react-native-css-interop/-/react-native-css-interop-0.1.22.tgz#70cc6ca7a8f14126e123e44a19ceed74dd2a167a"
