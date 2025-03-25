@@ -11,7 +11,7 @@ import {
   Keyboard,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import avatarBg from '../../assets/avatarBg.png';
+import backgroundColorImg from '../../assets/backgroundColorImg.jpg';
 
 const UserInfo = () => {
   const navigationHome = useNavigation();
@@ -33,7 +33,7 @@ const UserInfo = () => {
   const handleFinish = () => navigationHome.navigate('Main', { screen: 'Home' });
 
   return (
-    <ImageBackground source={avatarBg} style={styles.avatarBg}>
+    <ImageBackground source={backgroundColorImg} style={styles.backgroundColorImg}>
       <View style={styles.overlay} />
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View style={styles.slide}>
@@ -177,16 +177,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 10,
   },
-  avatarBg: { flex: 1, width: '100%', justifyContent: 'center', alignItems: 'center' },
-  overlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: '#502810',
-    opacity: 0.2,
-  },
+  backgroundColorImg: { flex: 1, width: '100%', justifyContent: 'center', alignItems: 'center' },
   title: {
     fontSize: 20,
     fontWeight: '800',
