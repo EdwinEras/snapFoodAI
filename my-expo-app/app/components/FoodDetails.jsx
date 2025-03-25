@@ -129,7 +129,13 @@ const FoodDetails = ({ uri, setUri }) => {
 
 const styles = StyleSheet.create({
   container: { padding: 20, width: '100%' },
-  recipeTitle: { fontSize: 18, fontWeight: 'bold', marginBottom: 10, textTransform: 'uppercase' },
+  recipeTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    textTransform: 'uppercase',
+    color: '#502810',
+  },
   topRow: {
     marginTop: 15,
     marginBottom: 30,
@@ -141,7 +147,7 @@ const styles = StyleSheet.create({
   outerCircle: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#fe8739',
+    backgroundColor: '#ff6f3a',
     borderRadius: 50,
     paddingVertical: 15,
     paddingHorizontal: 10,
@@ -155,29 +161,36 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 5,
   },
-  circleText: { fontSize: 14, color: '#fe8739', fontWeight: 'bold' },
+  circleText: { fontSize: 14, color: '#ff6f3a', fontWeight: 'bold' },
   nutrientText: { fontSize: 12, marginBottom: 3, color: 'white', fontWeight: 'bold' },
   unitText: { fontSize: 10, color: 'white', opacity: 0.8, fontWeight: 'bold' },
-  sectionTitle: { fontSize: 18, fontWeight: 'bold', marginVertical: 5, color: '#007891' },
+  sectionTitle: { fontSize: 18, fontWeight: 'bold', marginVertical: 5, color: '#502810' },
   nutrientRow: { flexDirection: 'row', alignItems: 'center', marginVertical: 5 },
-  bullet: { fontSize: 20, color: '#007891', marginRight: 10 },
-  nutrientName: { flex: 1, fontSize: 16, color: '#007891', opacity: 0.6 },
+  bullet: { fontSize: 20, color: '#502810', marginRight: 10 },
+  nutrientName: { flex: 1, fontSize: 16, color: '#502810', opacity: 0.6 },
   nutrientValue: { fontSize: 16, color: '#978F86' },
   buttonContainer: {
-    flexDirection: 'row', 
+    flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 30,
-    width: '100%', 
+    width: '100%',
   },
   button: {
     paddingHorizontal: 15,
-    paddingVertical: 10,
-    backgroundColor: '#fe8739',
+    paddingVertical: 15,
+    backgroundColor: '#ff6f3a',
     borderRadius: 5,
-    flex: 1, 
-    marginHorizontal: 5, 
+    flex: 1,
+    marginHorizontal: 5,
   },
-  buttonText: { fontSize: 16, fontWeight: '500', color: '#fff', opacity: 0.8, textAlign: 'center' },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: 600,
+    color: '#fff',
+    opacity: 0.8,
+    textAlign: 'center',
+    textTransform: 'uppercase',
+  },
 });
 
 export default FoodDetails;

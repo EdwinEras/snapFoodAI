@@ -44,14 +44,14 @@ const UserInfo = () => {
                 <TextInput
                   style={styles.input}
                   placeholder="Full Name"
-                  placeholderTextColor={'#AFA8A0'}
+                  placeholderTextColor={'#70929b'}
                   value={formData.name}
                   onChangeText={(text) => handleChange('fullName', text)}
                 />
                 <TextInput
                   style={styles.input}
                   placeholder="Email"
-                  placeholderTextColor={'#AFA8A0'}
+                  placeholderTextColor={'#70929b'}
                   keyboardType="email-address"
                   value={formData.email}
                   onChangeText={(text) => handleChange('email', text)}
@@ -59,7 +59,7 @@ const UserInfo = () => {
                 <TextInput
                   style={styles.input}
                   placeholder="Height/cm"
-                  placeholderTextColor={'#AFA8A0'}
+                  placeholderTextColor={'#70929b'}
                   keyboardType="numeric"
                   value={formData.height}
                   onChangeText={(text) => handleChange('height', text)}
@@ -67,7 +67,7 @@ const UserInfo = () => {
                 <TextInput
                   style={styles.input}
                   placeholder="Weight/kg"
-                  placeholderTextColor={'#AFA8A0'}
+                  placeholderTextColor={'#70929b'}
                   keyboardType="numeric"
                   value={formData.weight}
                   onChangeText={(text) => handleChange('weight', text)}
@@ -75,7 +75,7 @@ const UserInfo = () => {
                 <TextInput
                   style={styles.input}
                   placeholder="Age"
-                  placeholderTextColor={'#AFA8A0'}
+                  placeholderTextColor={'#70929b'}
                   keyboardType="numeric"
                   value={formData.age}
                   onChangeText={(text) => handleChange('age', text)}
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: '800',
-    color: '#502810',
+    color: '#135062',
     textAlign: 'center',
     marginBottom: 18,
     textTransform: 'uppercase',
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 10,
     borderWidth: 1.5,
-    borderColor: '#502810',
+    borderColor: '#135062',
     borderRadius: 6,
     backgroundColor: '#F7F5F2',
     fontSize: 18,
@@ -209,10 +209,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: 10,
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: '#135062',
   },
-  selectedOption: { backgroundColor: '#502810', borderColor: '#502810' },
-  optionText: { fontSize: 16, color: '#502810', fontWeight: 'bold', marginBottom: 4 },
+  selectedOption: { backgroundColor: '#135062', borderColor: '#135062' },
+  optionText: { fontSize: 16, color: '#135062', fontWeight: 'bold', marginBottom: 4 },
   selectedText: { color: '#fff' },
   buttonContainer: {
     flexDirection: 'row',
@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
   nextButton: {
     paddingVertical: 15,
     paddingHorizontal: 30,
-    backgroundColor: '#502810',
+    backgroundColor: '#135062',
     borderRadius: 8,
     width: '48%',
     alignItems: 'center',
@@ -233,13 +233,13 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 30,
     backgroundColor: '#fff',
-    borderColor: '#502810',
+    borderColor: '#135062',
     borderWidth: 2,
     borderRadius: 8,
     alignItems: 'center',
     width: '48%',
   },
-  backText: { fontSize: 18, color: '#502810', textTransform: 'uppercase', fontWeight: 'bold' },
+  backText: { fontSize: 18, color: '#135062', textTransform: 'uppercase', fontWeight: 'bold' },
 });
 
 export default UserInfo;

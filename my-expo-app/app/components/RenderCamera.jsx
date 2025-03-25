@@ -27,7 +27,7 @@ const RenderCamera = ({setUri}) => {
       responsiveOrientationWhenOrientationLocked>
       <View style={styles.shutterContainer}>
         <Pressable>
-          <AntDesign name="picture" size={32} color="#1A1918" />
+          <AntDesign name="picture" size={32} color="#502810" />
         </Pressable>
         <Pressable onPress={takePicture}>
           {({ pressed }) => (
@@ -42,7 +42,7 @@ const RenderCamera = ({setUri}) => {
                 style={[
                   styles.shutterBtnInner,
                   {
-                    backgroundColor: '#1A1918',
+                    backgroundColor: '#502810',
                   },
                 ]}
               />
@@ -50,7 +50,7 @@ const RenderCamera = ({setUri}) => {
           )}
         </Pressable>
         <Pressable onPress={toggleFacing}>
-          <FontAwesome6 name="rotate-left" size={32} color="#1A1918" />
+          <FontAwesome6 name="rotate-left" size={32} color="#502810" />
         </Pressable>
       </View>
     </CameraView>

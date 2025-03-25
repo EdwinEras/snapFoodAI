@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   imgWrapper: {
-    width: '80%',
+    width: '85%',
     height: 400,
     marginBottom: 20,
   },
