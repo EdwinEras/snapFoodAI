@@ -86,7 +86,7 @@ const FoodDetails = ({ uri, setUri }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.recipeTitle}>Toast with butter and honey</Text>
+      <Text style={styles.recipeTitle}>Fruits</Text>
 
       <View style={styles.topRow}>
         {topRowNutrients.map((nutrient, index) => (
