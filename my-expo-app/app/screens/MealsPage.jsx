@@ -1,31 +1,11 @@
-import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
-const MealSection = ({ title, meals }) => {
-  return (
-    <View style={styles.section}>
-      <Text style={styles.sectionTitle}>{title}</Text>
-      <View style={styles.mealContainer}>
-        {meals.map((item) => (
-          <View key={item.id} style={styles.card}>
-            <Image source={{ uri: item.image }} style={styles.image} />
-            <View style={styles.textContainer}>
-              <Text style={styles.mealName}>{item.name}</Text>
-              <Text style={styles.date}>{item.date}</Text>
-              <Ionicons name="flame" size={24} color="orange" style={styles.icon} />
-            </View>
-          </View>
-        ))}
-      </View>
-    </View>
-  );
-};
-
 const MealsScreen = ({n, setN}) => {
   const [arrImgs, setArrImgs] = useState([]);
+
   useEffect(() => {
     const loadCounter = async () => {
       const storedN = await AsyncStorage.getItem('meal_counter');
@@ -35,56 +15,11 @@ const MealsScreen = ({n, setN}) => {
     loadCounter();
   }, [n]);
   
-  const mealsData = {
-    breakfast: [
-      {
-        id: '1',
-        name: 'Oatmeal & Berries',
-        date: 'March 25, 2025',
-        image:
-          'https://images.unsplash.com/photo-1735316159929-4cd6782faa83?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fG9hdG1lYWwlMjBhbmQlMjBiZXJyaWVzfGVufDB8fDB8fHww',
-      },
-      {
-        id: '2',
-        name: 'Avocado Toast',
-        date: 'March 25, 2025',
-        image:
-          'https://images.unsplash.com/photo-1603046891726-36bfd957e0bf?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      },
-    ],
-    lunch: [
-      {
-        id: '3',
-        name: 'Grilled Chicken Salad',
-        date: 'March 25, 2025',
-        image:
-          'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=2026&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      },
-      {
-        id: '4',
-        name: 'Pasta Primavera',
-        date: 'March 25, 2025',
-        image:
-          'https://images.unsplash.com/photo-1473093226795-af9932fe5856?q=80&w=1994&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      },
-    ],
-    dinner: [
-      {
-        id: '5',
-        name: 'Salmon & Veggies',
-        date: 'March 25, 2025',
-        image:
-          'https://plus.unsplash.com/premium_photo-1675676628504-6593cc3b36e1?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      },
-      {
-        id: '6',
-        name: 'Beef Stir Fry',
-        date: 'March 25, 2025',
-        image:
-          'https://images.unsplash.com/photo-1720701247887-cab418baa6d6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      },
-    ],
-  };
+  const titles = [
+    { name: 'Breakfast' },
+    { name: 'Lunch' },
+    { name: 'Dinner' }
+  ];
 
   const getMeals = async () => {
     try {
@@ -104,12 +39,43 @@ const MealsScreen = ({n, setN}) => {
     }
   };
 
+  const deleteMeal = async () => {
+    try {
+      for (let i = 0; i <= n; i++) {
+        const key = `meal_${i}`;
+        await AsyncStorage.removeItem(key);
+        await AsyncStorage.removeItem('meal_counter');
+      }
+      setArrImgs([]);
+      setN(0);
+    } catch (error) {
+      console.error('Error deleting data:', error);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.mainTitle}>My Meals</Text>
       {arrImgs.map((img, index) => (
-        <MealSection title="Breakfast" meals={mealsData.breakfast} />
+        <View key={index} style={styles.section}>
+        {index<3? <Text style={styles.sectionTitle}>{titles[index].name}</Text>: <></>}
+          <View style={styles.mealContainer}>
+            <View style={styles.card}>
+              <Image source={{ img }} style={styles.image} />
+              <View style={styles.textContainer}>
+                <Text style={styles.mealName}>Meal #{index+1}</Text>
+                <Text style={styles.date}>March 25, 2025</Text>
+                <Ionicons name="flame" size={24} color="orange" style={styles.icon} />
+              </View>
+            </View>
+          </View>
+        </View>
       ))}
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.resetButton} onPress={deleteMeal}>
+          <Text style={styles.resetButtonText}>Reset Meals</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -120,7 +86,7 @@ const styles = StyleSheet.create({
   section: { marginBottom: 20 },
   sectionTitle: { fontSize: 22, fontWeight: 'bold', marginBottom: 10 },
   mealContainer: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
   },
@@ -140,10 +106,30 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 8,
   },
-  image: { width: '100%', height: 120, borderTopLeftRadius : 8, borderTopRightRadius: 8},
+  image: { width: '100%', height: 70, borderTopLeftRadius : 8, borderTopRightRadius: 8},
   mealName: { fontSize: 16, fontWeight: 'bold', marginTop: 5, textAlign: 'center', marginBottom: 6},
   date: { fontSize: 12, color: 'gray', marginBottom: 5, textAlign: 'center' },
   icon: { marginTop: 5, textAlign: 'center' },
+  buttonContainer: {
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginTop: 20,
+  },
+  resetButton: {
+    backgroundColor: '#14C8EB',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    marginHorizontal: 10,
+    flex: 1,
+  },
+  resetButtonText: {
+    fontSize: 16,
+    color: '#fff',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
 });
 
 export default MealsScreen;

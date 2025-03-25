@@ -1,7 +1,6 @@
 import { ScrollView, SafeAreaView, View, StyleSheet, Text, ImageBackground } from 'react-native';
-import MealsScreen from './MealsPage';
+import MealsPage from './MealsPage';
 import AvatarHome from 'app/components/AvatarHome';
-import MealsBoxes from 'app/components/MealsBoxes';
 import { useState } from 'react';
 
 const HomeScreen = () => {
@@ -10,8 +9,7 @@ const HomeScreen = () => {
     <SafeAreaView>
       <ScrollView>
         <AvatarHome n={n} setN={setN}/>
-        <MealsBoxes n={n} setN={setN}/>
-        <MealsScreen n={n} setN={setN}/>
+        <MealsPage n={n} setN={setN}/>
       </ScrollView>
     </SafeAreaView>
   );

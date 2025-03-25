@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import avatarSad from "../../assets/avatar_sad.png";
 import avatarHappy from "../../assets/avatar_happy.png";
