@@ -1,42 +1,42 @@
 import { useEffect } from 'react';
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import avatarSad from "../../assets/avatar_sad.png";
-import avatarHappy from "../../assets/avatar_happy.png";
-import avatarBackground from "../../assets/avatar_background.avif";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { View, Text, Image, ImageBackground, StyleSheet } from 'react-native';
+import avatarSad from '../../assets/avatar_sad.png';
+import avatarHappy from '../../assets/avatar_happy.png';
+import avatarBackground from '../../assets/avatar_background.jpg';
 
-const AvatarHome = ({n, setN}) => {
-
-  useEffect(()=>{
+const AvatarHome = ({ n, setN }) => {
+  useEffect(() => {
     const loadCounter = async () => {
-      const storedN = await AsyncStorage.getItem('meal_counter');
-      setN(storedN ? parseInt(storedN) : 0);
-      console.log("AvatarHome: "+n);
-    }
+      try {
+        const storedN = await AsyncStorage.getItem('meal_counter');
+        setN(storedN ? parseInt(storedN, 10) : 0);
+        console.log('AvatarHome:', storedN);
+      } catch (error) {
+        console.error('Error loading meal counter:', error);
+      }
+    };
     loadCounter();
-  }, [n]);
+  }, []);
 
   return (
     <View style={styles.imageContainer}>
-      <ImageBackground source={avatarBackground} style={styles.backgroundImage}
-      >
-        {n<1? <Image source={avatarSad} style={styles.overlayImage} />
-        :<Image source={avatarHappy} style={styles.overlayImage} />}
+      <ImageBackground source={avatarBackground} style={styles.backgroundImage}>
+        <Image
+          source={n < 1 ? avatarSad : avatarHappy}
+          style={styles.overlayImage}
+          resizeMode="contain"
+        />
+        <Text style={styles.overlayText}>
+          {n === 0 ? "I'm starving! 🍽️ Please feed me!" : 'Yum! Thanks for the meal! 😊'}
+        </Text>
       </ImageBackground>
-      {n==0? <Text>Please feed me, I'm hungry</Text>:
-      <Text>Thank you, I am full now</Text>}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  imageContainer: { marginTop: 20, height: 450 },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'lightgreen',
-  },
+  imageContainer: { height: 450, width: '100%' },
   backgroundImage: {
     width: '100%',
     height: '100%',
@@ -44,9 +44,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   overlayImage: {
-    width: 300,
-    height: 300,
+    width: 250,
+    height: 250,
+  },
+  overlayText: {
     position: 'absolute',
+    bottom: 50,
+    color: 'white',
+    fontSize: 20,
+    letterSpacing: 0.2,
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
 });
 

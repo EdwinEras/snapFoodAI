@@ -10,18 +10,18 @@ import {
 import { FontAwesome5 } from '@expo/vector-icons';
 
 const Rewards = () => {
-  const points = 350;
-  const streaks = Math.floor(points / 50);
-  const progress = (points % 50) / 50;
-  const pointsToNext = 50 - (points % 50);
+  const points = 360;
+  const streaks = Math.floor(points / 30);
+  const progress = (points % 30) / 30;
+  const pointsToNext = (30 - (points % 30)) % 30 || 30;
 
   const rewardsList = [
     {
       id: 1,
       icon: 'gift',
       title: 'Amazon Coupon',
-      desc: 'Get 10 streaks to unlock',
-      requiredStreaks: 10,
+      desc: 'Get 15 streaks to unlock',
+      requiredStreaks: 15,
     },
     {
       id: 2,
@@ -72,7 +72,7 @@ const Rewards = () => {
         {progress === 0 && points > 0 ? (
           <Text style={styles.progressComplete}>Streak Achieved!</Text>
         ) : (
-          <ActivityIndicator size="large" color="#FFD700" />
+          <ActivityIndicator size="large" color="#502810" />
         )}
       </View>
 
@@ -93,7 +93,7 @@ const Rewards = () => {
         <View style={styles.howItWorksRow}>
           <FontAwesome5 name="fire" size={15} color="#502810" />
           <Text style={styles.howItWorksText}>
-            Every <Text style={{ fontWeight: 'bold' }}>50 points</Text> = 1 streak.
+            Every <Text style={{ fontWeight: 'bold' }}>30 points</Text> = 1 streak.
           </Text>
         </View>
         <View style={styles.howItWorksRow}>
