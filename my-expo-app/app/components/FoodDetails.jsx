@@ -46,7 +46,7 @@ const nutrientData = [
   { name: 'Zinc', value: '-', unit: '' },
 ];
 
-const FoodDetails = ({uri, setUri}) => {
+const FoodDetails = ({ uri, setUri }) => {
   const [n, setN] = useState(0);
   const navigation = useNavigation();
 
@@ -73,8 +73,8 @@ const FoodDetails = ({uri, setUri}) => {
 
   const redoMeal = () => {
     setUri(null);
-    navigation.navigate('Main', { screen: 'CameraPage' })
-  }
+    navigation.navigate('Main', { screen: 'CameraPage' });
+  };
 
   const topRowNutrients = nutrientData.filter((nutrient) =>
     ['Calories', 'Proteins', 'Fat', 'Carbs'].includes(nutrient.name)
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
   outerCircle: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FF7E5F',
+    backgroundColor: '#502810',
     borderRadius: 50,
     paddingVertical: 15,
     paddingHorizontal: 10,
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 5,
   },
-  circleText: { fontSize: 14, color: '#FF7E5F', fontWeight: 'bold' },
+  circleText: { fontSize: 14, color: '#502810', fontWeight: 'bold' },
   nutrientText: { fontSize: 12, marginBottom: 3, color: 'white', fontWeight: 'bold' },
   unitText: { fontSize: 10, color: 'white', opacity: 0.8, fontWeight: 'bold' },
   sectionTitle: { fontSize: 18, fontWeight: 'bold', marginVertical: 5, color: '#007891' },
@@ -167,10 +167,10 @@ const styles = StyleSheet.create({
   button: {
     paddingHorizontal: 15,
     paddingVertical: 10,
-    backgroundColor: '#FF7E5F',
+    backgroundColor: '#502810',
     borderRadius: 5,
   },
-  buttonText: { fontSize: 16, fontWeight: '500', color: '#fff', opacity: 0.8 }
+  buttonText: { fontSize: 16, fontWeight: '500', color: '#fff', opacity: 0.8 },
 });
 
 export default FoodDetails;

@@ -9,8 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { FontAwesome5 } from '@expo/vector-icons';
-import MealsBoxes from 'app/components/MealsBoxes';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 function Profile() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -20,13 +19,13 @@ function Profile() {
     <SafeAreaView>
       <ScrollView>
         <View style={styles.container}>
-          <View style={styles.card}>
+          <View style={[styles.card, styles.firstCard]}>
             <View style={styles.row}>
               <Text style={styles.sectionTitle}>
-                <FontAwesome5 name="user" size={18} color="#44403D"/> Basic Info
+                <MaterialCommunityIcons name="account" size={18} color="#502810" /> Basic Info
               </Text>
               <TouchableOpacity onPress={() => navigation.navigate('UserInfo')}>
-                <FontAwesome5 name="edit" size={20} color="#44403D"/>
+                <MaterialCommunityIcons name="clipboard-edit-outline" size={20} color="#502810" />
               </TouchableOpacity>
             </View>
             <View style={styles.row}>
@@ -52,7 +51,7 @@ function Profile() {
             <View style={styles.row}>
               <View style={styles.box}>
                 <Text style={styles.label}>Email</Text>
-                <Text style={styles.value}>tesssst@gmail.com</Text>
+                <Text style={styles.value}>John@gmail.com</Text>
               </View>
               <View style={styles.box}>
                 <Text style={styles.label}>Activity Level</Text>
@@ -74,15 +73,15 @@ function Profile() {
           <View style={styles.card}>
             <View style={styles.bmiHeader}>
               <Text style={styles.sectionTitle}>
-                <FontAwesome5 name="chart-bar" size={20} color="#44403D" /> BMI
+                <MaterialCommunityIcons name="chart-bar" size={20} color="#502810" /> BMI
               </Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.bmiValue}>26.4</Text>
               <View style={styles.bmiResult}>
-                <Text style={styles.overweight}>Overweight</Text>
+                <Text style={styles.bmiResulttext}>Overweight</Text>
                 <TouchableOpacity onPress={() => setModalVisible(true)}>
-                  <FontAwesome5 name="info-circle" size={20} color="#44403D" />
+                  <MaterialCommunityIcons name="information" size={20} color="#502810" />
                 </TouchableOpacity>
               </View>
             </View>
@@ -109,7 +108,7 @@ function Profile() {
                   BMI is a measure of body fat based on height and weight. A BMI under 18.5 is
                   underweight, 18.5-24.9 is healthy, 25-29.9 is overweight, and 30+ is obese. While
                   BMI is a useful screening tool, it does not directly measure body fat and should
-                  be considered alonside other health factors.
+                  be considered alongside other health factors.
                 </Text>
                 <TouchableOpacity style={styles.modalButton} onPress={() => setModalVisible(false)}>
                   <Text style={styles.modalButtonText}>OK</Text>
@@ -130,19 +129,23 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: '#fff',
-    padding: 15,
+    paddingHorizontal: 15,
+    paddingVertical: 20,
     borderRadius: 12,
-    marginBottom: 20,
     shadowColor: '#000',
     shadowOpacity: 0.1,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 4,
     elevation: 2,
   },
+  firstCard: {
+    marginBottom: 30,
+    marginTop: 20,
+  },
   sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#2D2B29',
+    color: '#502810',
     marginBottom: 10,
   },
   row: {
@@ -159,14 +162,14 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 14,
-    color: '#FF7E5F',
+    color: '#502810',
     fontWeight: 400,
-    marginBottom: 6,
+    marginBottom: 10,
   },
   value: {
     fontSize: 16,
-    fontWeight: 'bold',
-    color: '#4F4A46',
+    fontWeight: 500,
+    color: '#502810',
     textAlign: 'center',
   },
   bmiHeader: {
@@ -178,7 +181,7 @@ const styles = StyleSheet.create({
   bmiValue: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#502810',
   },
   bmiResult: {
     display: 'flex',
@@ -186,9 +189,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  overweight: {
-    color: '#FF7E5F',
+  bmiResulttext: {
+    color: '#ea2300',
     fontWeight: 'bold',
+    textTransform: 'uppercase',
     marginRight: 6,
   },
   bmiBar: {
@@ -205,14 +209,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#14C8EB',
   },
   normal: {
-    backgroundColor: '#B4DC19',
+    backgroundColor: '#b5e550',
   },
   overweightSegment: {
-    backgroundColor: '#FF7E5F',
+    backgroundColor: '#fbdb4b',
     flex: 0.8,
   },
   obese: {
-    backgroundColor: '#9B0032',
+    backgroundColor: '#ea2300',
   },
   bmiLabels: {
     flexDirection: 'row',
@@ -233,7 +237,7 @@ const styles = StyleSheet.create({
   modalContent: {
     width: '80%',
     backgroundColor: '#FFF',
-    padding: 20,
+    padding: 30,
     borderRadius: 10,
     alignItems: 'center',
   },
@@ -241,7 +245,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 20,
-    color: '#007891',
+    color: '#502810',
   },
   modalText: {
     fontSize: 16,
@@ -252,8 +256,8 @@ const styles = StyleSheet.create({
     color: '#978F86',
   },
   modalButton: {
-    backgroundColor: '#FF7E5F',
-    paddingHorizontal: 20,
+    backgroundColor: '#502810',
+    paddingHorizontal: 30,
     paddingVertical: 10,
     borderRadius: 5,
   },

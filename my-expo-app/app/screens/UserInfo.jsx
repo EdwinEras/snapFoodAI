@@ -7,7 +7,8 @@ import {
   StyleSheet,
   ImageBackground,
   TouchableWithoutFeedback,
-  Keyboard
+  ScrollView,
+  Keyboard,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import avatarBg from '../../assets/avatarBg.png';
@@ -36,9 +37,6 @@ const UserInfo = () => {
       <View style={styles.overlay} />
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View style={styles.slide}>
-          <Text style={styles.entryText}>
-            Make Every Meal Count! Scan Food, Earn Rewards, and Keep Your Pine Marten Smiling!
-          </Text>
           <View style={styles.glassContainer}>
             {currentPage === 1 && (
               <>
@@ -46,26 +44,30 @@ const UserInfo = () => {
                 <TextInput
                   style={styles.input}
                   placeholder="Full Name"
+                  placeholderTextColor={'#AFA8A0'}
                   value={formData.name}
                   onChangeText={(text) => handleChange('fullName', text)}
                 />
                 <TextInput
                   style={styles.input}
                   placeholder="Email"
+                  placeholderTextColor={'#AFA8A0'}
                   keyboardType="email-address"
                   value={formData.email}
                   onChangeText={(text) => handleChange('email', text)}
                 />
                 <TextInput
                   style={styles.input}
-                  placeholder="Height"
+                  placeholder="Height/cm"
+                  placeholderTextColor={'#AFA8A0'}
                   keyboardType="numeric"
                   value={formData.height}
                   onChangeText={(text) => handleChange('height', text)}
                 />
                 <TextInput
                   style={styles.input}
-                  placeholder="Weight"
+                  placeholder="Weight/kg"
+                  placeholderTextColor={'#AFA8A0'}
                   keyboardType="numeric"
                   value={formData.weight}
                   onChangeText={(text) => handleChange('weight', text)}
@@ -73,6 +75,7 @@ const UserInfo = () => {
                 <TextInput
                   style={styles.input}
                   placeholder="Age"
+                  placeholderTextColor={'#AFA8A0'}
                   keyboardType="numeric"
                   value={formData.age}
                   onChangeText={(text) => handleChange('age', text)}
@@ -159,7 +162,7 @@ const UserInfo = () => {
 const styles = StyleSheet.create({
   slide: {
     flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingVertical: 100,
@@ -174,12 +177,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 10,
   },
-  entryText: {
-    fontSize: 22,
-    fontWeight: 800,
-    color: '#FF7E5F',
-    textAlign: 'center',
-  },
   avatarBg: { flex: 1, width: '100%', justifyContent: 'center', alignItems: 'center' },
   overlay: {
     position: 'absolute',
@@ -187,12 +184,13 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(149, 87, 45, 0.3)',
+    backgroundColor: '#502810',
+    opacity: 0.2,
   },
   title: {
     fontSize: 20,
     fontWeight: '800',
-    color: '#2D2B29',
+    color: '#502810',
     textAlign: 'center',
     marginBottom: 18,
     textTransform: 'uppercase',
@@ -203,7 +201,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 10,
     borderWidth: 1.5,
-    borderColor: '#8C8279',
+    borderColor: '#502810',
     borderRadius: 6,
     backgroundColor: '#F7F5F2',
     fontSize: 18,
@@ -222,8 +220,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ddd',
   },
-  selectedOption: { backgroundColor: '#FF7E5F', borderColor: '#FF7E5F' },
-  optionText: { fontSize: 16, color: '#2D2B29', fontWeight: 'bold' },
+  selectedOption: { backgroundColor: '#502810', borderColor: '#502810' },
+  optionText: { fontSize: 16, color: '#502810', fontWeight: 'bold', marginBottom: 4 },
   selectedText: { color: '#fff' },
   buttonContainer: {
     flexDirection: 'row',
@@ -234,7 +232,7 @@ const styles = StyleSheet.create({
   nextButton: {
     paddingVertical: 15,
     paddingHorizontal: 30,
-    backgroundColor: '#2D2B29',
+    backgroundColor: '#502810',
     borderRadius: 8,
     width: '48%',
     alignItems: 'center',
@@ -243,12 +241,14 @@ const styles = StyleSheet.create({
   backButton: {
     paddingVertical: 15,
     paddingHorizontal: 30,
-    backgroundColor: '#FF7E5F',
+    backgroundColor: '#fff',
+    borderColor: '#502810',
+    borderWidth: 2,
     borderRadius: 8,
     alignItems: 'center',
     width: '48%',
   },
-  backText: { fontSize: 18, color: '#fff', textTransform: 'uppercase', fontWeight: 'bold' },
+  backText: { fontSize: 18, color: '#502810', textTransform: 'uppercase', fontWeight: 'bold' },
 });
 
 export default UserInfo;

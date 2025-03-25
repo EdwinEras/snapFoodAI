@@ -53,7 +53,7 @@ yarn add expo
 
 ### 6. Configure App.js in the node_modules/expo entry file
 ```bash
-import App from '../../app/App';
+import App from '../../App';
 ```
 
 ### 7. Running on iOS (No CocoaPods needed)

@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   imageContainer: { marginTop: 20, height: 450 },
   image: { width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center' },
   overlay: {
-    backgroundColor: '#FF7E5F',
+    backgroundColor: '#502810',
     opacity: 0.4,
     position: 'absolute',
     width: '100%',

@@ -1,5 +1,4 @@
 import { ScrollView, SafeAreaView, View, StyleSheet, Pressable, Text } from 'react-native';
-import { Image } from 'expo-image';
 import FoodDetails from '../components/FoodDetails';
 import FoodImage from 'app/components/FoodImage';
 
