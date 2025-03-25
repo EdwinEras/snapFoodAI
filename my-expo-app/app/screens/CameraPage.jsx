@@ -22,7 +22,7 @@ const CameraPage = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={{ flex: 1, width: '100%' }}>
       {uri ? <RenderPicture uri={uri} setUri={setUri} /> : <RenderCamera setUri={setUri} />}
     </View>
   );

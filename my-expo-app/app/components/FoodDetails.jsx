@@ -163,14 +163,21 @@ const styles = StyleSheet.create({
   bullet: { fontSize: 20, color: '#007891', marginRight: 10 },
   nutrientName: { flex: 1, fontSize: 16, color: '#007891', opacity: 0.6 },
   nutrientValue: { fontSize: 16, color: '#978F86' },
-  buttonsContainer: { marginTop: 30, alignItems: 'flex-end' },
+  buttonContainer: {
+    flexDirection: 'row', 
+    justifyContent: 'space-between',
+    marginTop: 30,
+    width: '100%', 
+  },
   button: {
     paddingHorizontal: 15,
     paddingVertical: 10,
     backgroundColor: '#fe8739',
     borderRadius: 5,
+    flex: 1, 
+    marginHorizontal: 5, 
   },
-  buttonText: { fontSize: 16, fontWeight: '500', color: '#fff', opacity: 0.8 },
+  buttonText: { fontSize: 16, fontWeight: '500', color: '#fff', opacity: 0.8, textAlign: 'center' },
 });
 
 export default FoodDetails;
