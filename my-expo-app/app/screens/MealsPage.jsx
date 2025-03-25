@@ -35,7 +35,7 @@ const MealsScreen = ({n, setN}) => {
       }
       setArrImgs(newArr);
     } catch (error) {
-      console.error('Error retrieving data:', error);
+      console.log('Error retrieving data:', error);
     }
   };
 
@@ -49,7 +49,7 @@ const MealsScreen = ({n, setN}) => {
       setArrImgs([]);
       setN(0);
     } catch (error) {
-      console.error('Error deleting data:', error);
+      console.log('Error deleting data:', error);
     }
   };
 
@@ -61,7 +61,7 @@ const MealsScreen = ({n, setN}) => {
         {index<3? <Text style={styles.sectionTitle}>{titles[index].name}</Text>: <></>}
           <View style={styles.mealContainer}>
             <View style={styles.card}>
-              <Image source={{ img }} style={styles.image} />
+              <Image source={{uri:img}} style={styles.image} />
               <View style={styles.textContainer}>
                 <Text style={styles.mealName}>Meal #{index+1}</Text>
                 <Text style={styles.date}>March 25, 2025</Text>
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 8,
   },
-  image: { width: '100%', height: 70, borderTopLeftRadius : 8, borderTopRightRadius: 8},
+  image: { width: '100%', height: 100, borderTopLeftRadius : 8, borderTopRightRadius: 8},
   mealName: { fontSize: 16, fontWeight: 'bold', marginTop: 5, textAlign: 'center', marginBottom: 6},
   date: { fontSize: 12, color: 'gray', marginBottom: 5, textAlign: 'center' },
   icon: { marginTop: 5, textAlign: 'center' },
