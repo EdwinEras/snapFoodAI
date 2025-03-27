@@ -11,9 +11,17 @@ app.get('/', (req, res)=>{
     res.status(200).send("Welcome to snapFoodAI REST API");
 });
 
+// User HTTP requests
 app.get('/user', (req, res)=>{
     console.log(req.body);
-    res.status(200).send("Users api");
+    res.status(200).send("Users API");
+});
+
+
+// Google HTTP requests
+app.get('/image-recognition', (req, res)=>{
+    console.log(req.body);
+    res.status(200).send("Google API");
 });
 
 app.post('/image-recognition', (req, res)=>{
@@ -21,12 +29,16 @@ app.post('/image-recognition', (req, res)=>{
     res.status(200).send("Welcome to root URL of Server");
 });
 
+
+// FoodAPI HTTP requests
 app.get('/food_api', (req, res)=>{
     console.log(req.body);
     res.status(200).send("Food Api");
 });
 
+
+// Rewards HTTP requests
 app.get('/rewards', (req, res)=>{
     console.log(req.body);
-    res.status(200).send("Food Api");
+    res.status(200).send("Rewards API");
 });
