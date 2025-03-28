@@ -30,7 +30,21 @@ const UserInfo = () => {
 
   const handleNext = () => setCurrentPage((prev) => prev + 1);
   const handleBack = () => setCurrentPage((prev) => prev - 1);
-  const handleFinish = () => navigationHome.navigate('Main', { screen: 'Home' });
+  const handleFinish = async () => {
+    try {
+      const response = await fetch(`http://localhost:3000/user/${userId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      console.log('Profile Updated:', data);
+      navigation.navigate('Main', { screen: 'Home' });
+    } catch (error) {
+      console.error('Update Error:', error);
+    }
+  };
 
   return (
     <ImageBackground source={backgroundColorImg} style={styles.backgroundColorImg}>
@@ -188,7 +202,8 @@ const styles = StyleSheet.create({
   },
   subtitle: { fontSize: 16, color: '#2D2B29', textAlign: 'center', marginBottom: 18 },
   input: {
-    width: 300,
+    width: '100%',
+    minWidth: '100%',
     paddingVertical: 15,
     paddingHorizontal: 10,
     borderWidth: 1.5,
@@ -199,7 +214,8 @@ const styles = StyleSheet.create({
     marginBottom: 14,
   },
   option: {
-    width: 280,
+    width: '100%',
+    minWidth: '100%',
     paddingVertical: 15,
     paddingHorizontal: 20,
     backgroundColor: '#F7F5F2',

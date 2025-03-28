@@ -5,6 +5,7 @@ import Rewards from '../screens/Rewards';
 import Profile from '../screens/Profile';
 import CameraPage from 'app/screens/CameraPage';
 import BetterBites from 'app/screens/BetterBites';
+import WelcomeScreen from 'app/screens/WelcomeScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -30,6 +31,9 @@ function BottomMenu() {
             case 'My Rewards':
               iconName = focused ? 'gift-open' : 'gift';
               break;
+            case 'WS':
+              iconName = focused ? 'gift-open' : 'gift';
+              break;
             default:
               iconName = 'help-circle-outline';
           }
@@ -47,6 +51,7 @@ function BottomMenu() {
       <Tab.Screen name="Camera" component={CameraPage} />
       <Tab.Screen name="Profile" component={Profile} />
       <Tab.Screen name="My Rewards" component={Rewards} />
+      <Tab.Screen name="WS" component={WelcomeScreen} />
     </Tab.Navigator>
   );
 }
