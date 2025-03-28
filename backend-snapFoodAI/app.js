@@ -1,9 +1,18 @@
 const express = require('express');
+const mealDetection = require('./google_vision')
+// const admin = require('./firebaseAdmin');
 const app = express();
+
 app.use(express.json());
 const axios = require('axios');
 const API_KEY = 'L9Zh1jt7dyMSChVFsVWiz5hcmIAsnci34iftKCej'; 
+
+var cors = require('cors')
+
 const PORT = process.env.PORT || 3000;
+
+app.use(express.json());
+app.use(cors())
 
 app.listen(PORT, () => {
     console.log("Server Listening on PORT:", PORT);
@@ -14,21 +23,30 @@ app.get('/', (req, res)=>{
 });
 
 // User HTTP requests
-app.get('/user', (req, res)=>{
+app.get('/user', async (req, res)=>{
     console.log(req.body);
     res.status(200).send("Users API");
 });
 
+app.post('/user', async (req, res) => {
+    const data = req.body;
+    console.log(data);
+    const users = await createUser(data);
+    res.send(users);
+});
+
 
 // Google HTTP requests
-app.get('/image-recognition', (req, res)=>{
+app.get('/image-recognition', async (req, res)=>{
     console.log(req.body);
     res.status(200).send("Google API");
 });
 
-app.post('/image-recognition', (req, res)=>{
-    console.log(req.body);
-    res.status(200).send("Welcome to root URL of Server");
+app.post('/image-recognition', async(req, res)=>{
+    const uri = req.body.uri;
+    console.log(uri);
+    // await mealDetection(uri);
+    res.status(200).send(uri);
 });
 
 

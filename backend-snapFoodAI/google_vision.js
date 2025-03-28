@@ -3,7 +3,7 @@ const client = new vision.ImageAnnotatorClient({
     keyFilename: 'snapfoodai-key.json'
 });
 
-async function mealDeteaction(imgUri) {
+async function mealDetection(imgUri) {
     const [ result ] = await client.labelDetection(imgUri);
     const labels = result.labelAnnotations.map((label)=>{
         label.description.toLowerCase();
@@ -12,5 +12,5 @@ async function mealDeteaction(imgUri) {
     labels.forEach(label => console.log(label.description));
 }
 
-module.exports = {mealDeteaction};
+module.exports = mealDetection;
 
