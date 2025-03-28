@@ -1,6 +1,6 @@
 import { CameraView } from 'expo-camera';
 import { useRef, useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome6 } from '@expo/vector-icons';
 
@@ -23,7 +23,7 @@ const RenderCamera = ({setUri}) => {
       ref={ref}
       mode="picture"
       facing={facing}
-      mute={false}
+      ratio='4:3'
       responsiveOrientationWhenOrientationLocked>
       <View style={styles.shutterContainer}>
         <Pressable>

@@ -1,19 +1,17 @@
 import { ScrollView, SafeAreaView, View, StyleSheet } from 'react-native';
 import FoodDetails from '../components/FoodDetails';
 import FoodImage from 'app/components/FoodImage';
-import imgRecognition from 'app/routes/google_vision';
+import analyzeImage from 'app/routes/google_vision';
 import { useEffect } from 'react';
-
+// import ImageResizer from 'react-native-image-resizer';
 
 const FoodInfo = ({uri, setUri}) => {
   useEffect(() => {
     const labelImage = async (uri) => {
-      const data = await imgRecognition(uri)
-      .then((res) =>{
-        return res;
-      }).catch((err)=>{
-        return err;
-      });
+      // const resized = await ImageResizer.createResizedImage(uri, 640, 480, 'JPEG', 80);
+      const data = await analyzeImage(uri)
+      .then(res => res)
+      .catch(err => err);
       console.log(data);
     }
     labelImage(uri);

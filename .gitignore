@@ -1,5 +1,6 @@
 my-expo-app/node_modules/
 backend-snapFoodAI/node_modules/
-backend-snapFoodAI/snapfoodai-key.json
 backend-snapFoodAI/snapfoodai-sdk.json
+backend-snapFoodAI/snapfoodai-key.json
+my-expo-app/snapfoodai-key.json
 .DS_Store
