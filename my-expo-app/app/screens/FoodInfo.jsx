@@ -1,8 +1,24 @@
-import { ScrollView, SafeAreaView, View, StyleSheet, Pressable, Text } from 'react-native';
+import { ScrollView, SafeAreaView, View, StyleSheet } from 'react-native';
 import FoodDetails from '../components/FoodDetails';
 import FoodImage from 'app/components/FoodImage';
+import imgRecognition from 'app/routes/google_vision';
+import { useEffect } from 'react';
+
 
 const FoodInfo = ({uri, setUri}) => {
+  useEffect(() => {
+    const labelImage = async (uri) => {
+      const data = await imgRecognition(uri)
+      .then((res) =>{
+        return res;
+      }).catch((err)=>{
+        return err;
+      });
+      console.log(data);
+    }
+    labelImage(uri);
+  }, []);
+
   return (
     <SafeAreaView>
       <ScrollView>
