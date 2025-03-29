@@ -4,7 +4,7 @@ const route2 = "http://192.168.2.143:3000"
 const route3 = "http://172.20.10.5:3000"
 
 const imgRecognition = async (uri) =>{
-    const formData = new FormData();
+    const formData = new FormData();  
     formData.append('image', {
       uri: uri,
       type: 'image/jpeg',

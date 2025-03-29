@@ -46,7 +46,7 @@ const nutrientData = [
   { name: 'Zinc', value: '-', unit: '' },
 ];
 
-const FoodDetails = ({ uri, setUri }) => {
+const FoodDetails = ({ uri, setUri, meal, nutri }) => {
   const [n, setN] = useState(0);
   const navigation = useNavigation();
 
@@ -86,9 +86,10 @@ const FoodDetails = ({ uri, setUri }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.recipeTitle}>Fruits</Text>
+        <Text style={styles.recipeTitle}>{meal}</Text>
 
       <View style={styles.topRow}>
+        {/* {topRowNutrients.map((nutrient, index) => ( */}
         {topRowNutrients.map((nutrient, index) => (
           <View key={index} style={styles.nutrientContainer}>
             <View style={styles.outerCircle}>
@@ -104,12 +105,13 @@ const FoodDetails = ({ uri, setUri }) => {
 
       <Text style={styles.sectionTitle}>Nutritional Information:</Text>
       <View style={styles.nutrition}>
-        {otherNutrients.map((nutrient, index) => (
+        {/* {otherNutrients.map((nutrient, index) => ( */}
+        {nutri.map((nutrient, index) => (
           <View key={index} style={styles.nutrientRow}>
             <Text style={styles.bullet}>•</Text>
             <Text style={styles.nutrientName}>{nutrient.name}</Text>
             <Text style={styles.nutrientValue}>
-              {nutrient.value} {nutrient.unit}
+              {nutrient.amount} {nutrient.unit}
             </Text>
           </View>
         ))}

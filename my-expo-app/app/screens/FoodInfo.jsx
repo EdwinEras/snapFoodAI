@@ -1,32 +1,65 @@
 import { ScrollView, SafeAreaView, View, StyleSheet } from 'react-native';
 import FoodDetails from '../components/FoodDetails';
 import FoodImage from 'app/components/FoodImage';
-import analyzeImage from 'app/routes/google_vision';
-import { useEffect } from 'react';
-// import ImageResizer from 'react-native-image-resizer';
+import imgRecognition from 'app/routes/google_vision';
+import { useEffect, useState } from 'react';
+import getNutrionalFacts from '../routes/nutitionalFacts'
+import Loading from './Loading';
 
 const FoodInfo = ({uri, setUri}) => {
+  const [meal, setMeal] = useState([]);
+  const [nutFact, setNutFact] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const labelImage = async (uri) => {
-      // const resized = await ImageResizer.createResizedImage(uri, 640, 480, 'JPEG', 80);
-      const data = await analyzeImage(uri)
-      .then(res => res)
-      .catch(err => err);
+    const fetchLabels = async (uri) => {
+      try{
+      setLoading(true);
+      const data = await imgRecognition(uri)
       console.log(data);
+      setMeal(data.labels);
+    } catch (err) {
+      console.error("Error in imgRecognition:", err);
     }
-    labelImage(uri);
+    setLoading(false);
+      // setMeal(['APPLE']);
+      // const nutri = await getNutrionalFacts(meal[0])
+      // .then(res => res)
+      // .catch(err => err);
+      // console.log(nutri);
+      // setNutFact(nutri);
+      // setLoading(false);
+    }
+    fetchLabels(uri);
   }, []);
+
+  useEffect(() => {
+    if (!meal || meal.length === 0) return; // Prevent running with undefined meal
+    const fetchNutrition = async (meal) => {
+      setLoading(true);
+      try {
+        const nutri = await getNutrionalFacts(meal[0]);
+        console.log(nutri);
+        setNutFact(nutri);
+      } catch (err) {
+        console.error("Error in getNutritionalFacts:", err);
+      }
+  
+      setLoading(false);
+    };
+    fetchNutrition(meal);
+  }, [meal]);
 
   return (
     <SafeAreaView>
+      {loading? <Loading />: 
       <ScrollView>
         <View>
           <FoodImage uri={uri} />
         </View>
         <View style={styles.container}>
-          <FoodDetails uri={uri} setUri={setUri}/>
+          <FoodDetails uri={uri} setUri={setUri} meal={meal} nutri={nutFact}/>
         </View>
-      </ScrollView>
+      </ScrollView>}
     </SafeAreaView>
   );
 };
